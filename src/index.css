@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-mustard: #c7b65c;
+  --color-mustard-dark: #a9974a;
+  --color-pink: #f7b3cc;
+  --color-pink-dark: #e88cb0;
+  --color-tan: #f3e7d7;
+  --color-tan-dark: #e3d0b5;
+  --color-orange: #f3a632;
+  --color-orange-dark: #d98e1f;
+  --color-butter: #f7e28e;
+  --color-butter-dark: #e8c94f;
+  --color-cream: #fbf7ef;
+  --color-ink: #171310;
+  --color-coral: #ee583f;
+  --color-coral-dark: #c9412a;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-coral);
+  outline-offset: 3px;
+}
