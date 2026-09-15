@@ -58,7 +58,7 @@ export default function About() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-[2rem] border-4 border-ink/10 bg-cream shadow-xl md:mx-0"
           >
-            <img src="/isa-portrait.png" alt="Isa Bettonvil" className="h-full w-full object-cover" />
+            <img src="/isa-portrait-about.png" alt="Isa Bettonvil" className="h-full w-full object-cover" />
           </motion.div>
 
           <motion.div

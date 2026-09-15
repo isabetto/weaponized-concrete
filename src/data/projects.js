@@ -44,6 +44,7 @@ export const projects = [
       'Een nieuwe website voor een lokale platenzaak, als visitekaartje voor openingstijden, locatie en sfeer.',
     role: 'UI designer',
     year: '2025',
+    image: '/langspeelplaat-screenshot.png',
     details: [
       'Voor een lokale platenzaak heb ik een nieuwe website ontworpen.',
       'De website dient vooral als visitekaartje, met openingstijden, locatie en de sfeer van de winkel.',
