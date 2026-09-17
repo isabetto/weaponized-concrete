@@ -46,11 +46,6 @@ export default function Work() {
                   <h2 className="mt-3 font-display text-[26px] font-medium text-ink md:text-[34px]">
                     {p.title}
                   </h2>
-                  <div className="mt-3 flex gap-4 font-body text-sm font-semibold text-ink/60">
-                    <span>{p.role}</span>
-                    <span aria-hidden="true">·</span>
-                    <span>{p.year}</span>
-                  </div>
 
                   <div className="mt-6 space-y-4 font-body text-[15px] leading-[1.5] text-ink/80">
                     {p.details.map((d) => (

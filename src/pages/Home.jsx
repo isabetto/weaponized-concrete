@@ -4,24 +4,33 @@ import Button from '../components/Button'
 
 const homeProjects = [
   {
-    slug: 'lapswans',
-    kicker: 'UI Design · E-COMMERCE',
-    title: 'Lapswans',
-    summary: 'Herontwerp van de webshop om de conversieratio te verbeteren.',
+    slug: 'langspeelplaat',
+    kicker: 'UI Design · WEBSITE',
+    title: 'Stichting de Langspeelplaat',
+    summary: 'Herontwerp van de website om nieuwe klanten te trekken.',
+    color: 'pink',
   },
   {
     slug: 'base-app',
     kicker: 'UX/UI DESIGN · MOBIELE APP',
     title: 'BASE',
     summary: 'Een app die jongeren op een laagdrempelige manier leert over toeslagen.',
+    color: 'mustard',
   },
   {
-    slug: 'langspeelplaat',
-    kicker: 'UI Design · WEBSITE',
-    title: 'Stichting de Langspeelplaat',
-    summary: 'Herontwerp van de website om nieuwe klanten te trekken.',
+    slug: 'lapswans',
+    kicker: 'UI Design · E-COMMERCE',
+    title: 'Lapswans',
+    summary: 'Herontwerp van de webshop om de conversieratio te verbeteren.',
+    color: 'orange',
   },
 ]
+
+const cardColorClasses = {
+  orange: 'bg-orange',
+  mustard: 'bg-mustard',
+  pink: 'bg-pink',
+}
 
 const skills = [
   'User-Interface ontwerp & User-experience onderzoek',
@@ -109,7 +118,7 @@ export default function Home() {
               >
                 <Link
                   to={`/werk#${p.slug}`}
-                  className="group block h-full rounded-2xl bg-cream/80 p-7 transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
+                  className={`group block h-full rounded-2xl ${cardColorClasses[p.color]} p-7 transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl`}
                 >
                   <p className="font-body text-[11px] font-semibold uppercase tracking-[0.04em] text-ink/60">
                     {p.kicker}
