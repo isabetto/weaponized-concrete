@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Button from '../components/Button'
-import StitchDivider from '../components/StitchDivider'
 
 const homeProjects = [
   {
@@ -84,8 +83,6 @@ export default function Home() {
         </div>
       </section>
 
-      <StitchDivider bg="bg-butter" thread="#171310" />
-
       <section className="bg-butter px-6 py-16 md:px-10 lg:px-20 md:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -128,8 +125,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <StitchDivider bg="bg-coral" thread="#fbf7ef" />
 
       <section className="bg-coral px-6 py-16 md:px-10 lg:px-20 md:py-24">
         <div className="mx-auto max-w-7xl">

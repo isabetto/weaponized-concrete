@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import StitchDivider from '../components/StitchDivider'
 
 const experience = [
   {
@@ -85,8 +84,6 @@ export default function About() {
           </motion.div>
         </div>
       </section>
-
-      <StitchDivider bg="bg-mustard" thread="#171310" />
 
       <section className="bg-mustard px-6 py-16 md:px-10 lg:px-20 md:py-24">
         <div className="mx-auto max-w-3xl">

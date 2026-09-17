@@ -1,10 +1,8 @@
 import Button from './Button'
-import StitchDivider from './StitchDivider'
 
 export default function Footer() {
   return (
     <footer>
-      <StitchDivider bg="bg-tan" thread="#171310" />
       <div className="bg-tan px-6 py-16 md:px-10 lg:px-20 md:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 md:grid-cols-[1.3fr_1fr]">

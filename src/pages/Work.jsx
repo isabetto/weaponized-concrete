@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import Button from '../components/Button'
-import StitchDivider from '../components/StitchDivider'
 import { projects } from '../data/projects'
 
 const bgClasses = {
@@ -28,9 +27,7 @@ export default function Work() {
       </section>
 
       {projects.map((p, i) => (
-        <div key={p.slug}>
-          <StitchDivider bg={bgClasses[p.color]} thread="#171310" />
-          <section id={p.slug} className={`${bgClasses[p.color]} scroll-mt-20 px-6 py-16 md:px-10 lg:px-20 md:py-24`}>
+          <section key={p.slug} id={p.slug} className={`${bgClasses[p.color]} scroll-mt-20 px-6 py-16 md:px-10 lg:px-20 md:py-24`}>
             <div className="mx-auto max-w-7xl">
               <div
                 className={`grid gap-10 md:grid-cols-2 md:items-center ${
@@ -84,7 +81,6 @@ export default function Work() {
               </div>
             </div>
           </section>
-        </div>
       ))}
     </div>
   )
