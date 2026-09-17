@@ -67,9 +67,7 @@ export default function Work() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
-                  className={`overflow-hidden rounded-2xl bg-cream shadow-xl ${
-                    p.slug === 'base-app' ? 'border-4 border-ink/40' : 'border-4 border-ink/10'
-                  }`}
+                  className="overflow-hidden rounded-2xl border-4 border-ink/10 bg-cream shadow-xl"
                 >
                   {p.image && (
                     <img src={p.image} alt={`Werk voor ${p.title}`} className="h-full w-full object-cover" />
