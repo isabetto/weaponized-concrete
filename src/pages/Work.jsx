@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Button from '../components/Button'
+import ProjectLightbox from '../components/ProjectLightbox'
 import { projects } from '../data/projects'
 
 const bgClasses = {
@@ -9,6 +12,19 @@ const bgClasses = {
 }
 
 export default function Work() {
+  const [activeSlug, setActiveSlug] = useState(null)
+  const activeProject = projects.find((p) => p.slug === activeSlug) ?? null
+  const location = useLocation()
+
+  useEffect(() => {
+    if (!location.hash) return
+    const el = document.querySelector(location.hash)
+    if (!el) return
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }, [location])
+
   return (
     <div>
       <section className="bg-coral px-6 py-16 md:px-10 lg:px-20 md:py-24">
@@ -26,12 +42,12 @@ export default function Work() {
         </div>
       </section>
 
-      {projects.map((p, i) => (
+      {projects.map((p) => (
           <section key={p.slug} id={p.slug} className={`${bgClasses[p.color]} scroll-mt-20 px-6 py-16 md:px-10 lg:px-20 md:py-24`}>
             <div className="mx-auto max-w-7xl">
               <div
                 className={`grid gap-10 md:grid-cols-2 md:items-center ${
-                  i % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''
+                  p.imageFirst ? 'md:[&>*:first-child]:order-2' : ''
                 }`}
               >
                 <motion.div
@@ -53,10 +69,10 @@ export default function Work() {
                     ))}
                   </div>
 
-                  {p.link && (
+                  {(p.screens?.length || p.image) && (
                     <div className="mt-8">
-                      <Button href={p.link} variant="ghost" target="_blank" rel="noreferrer">
-                        {p.linkLabel} ↗
+                      <Button variant="ghost" onClick={() => setActiveSlug(p.slug)}>
+                        Bekijk ↗
                       </Button>
                     </div>
                   )}
@@ -67,16 +83,33 @@ export default function Work() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
-                  className="overflow-hidden rounded-2xl border-4 border-ink/10 bg-cream shadow-xl"
+                  className={
+                    p.frameless
+                      ? 'overflow-hidden rounded-2xl'
+                      : 'overflow-hidden rounded-2xl border-4 border-ink/10 bg-cream shadow-xl'
+                  }
                 >
                   {p.image && (
-                    <img src={p.image} alt={`Werk voor ${p.title}`} className="h-full w-full object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveSlug(p.slug)}
+                      className="block h-full w-full cursor-zoom-in"
+                      aria-label={`Bekijk schermen van ${p.title}`}
+                    >
+                      <img
+                        src={p.image}
+                        alt={`Werk voor ${p.title}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </button>
                   )}
                 </motion.div>
               </div>
             </div>
           </section>
       ))}
+
+      <ProjectLightbox project={activeProject} onClose={() => setActiveSlug(null)} />
     </div>
   )
 }

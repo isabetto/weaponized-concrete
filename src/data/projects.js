@@ -6,9 +6,10 @@ export const projects = [
     color: 'pink',
     summary:
       'Een nieuwe website voor een lokale platenzaak, als visitekaartje voor openingstijden, locatie en sfeer.',
-    link: 'https://www.figma.com/proto/NzB8QQUB79mMcSrH0aaVi8/De-langspeelplaat?node-id=1-7&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
-    linkLabel: 'Bekijk prototype in Figma',
     image: '/langspeelplaat-screenshot.png',
+    screens: ['/langspeelplaat-screenshot.png'],
+    video: '/langspeelplaat-demo.mp4',
+    frameless: true,
     details: [
       'Voor een lokale platenzaak heb ik een nieuwe website ontworpen.',
       'De website dient vooral als visitekaartje, met openingstijden, locatie en de sfeer van de winkel.',
@@ -21,9 +22,10 @@ export const projects = [
     color: 'mustard',
     summary:
       'Een mobiele app die jongeren op een laagdrempelige, quiz-achtige manier leert over toeslagen en belastingvoordelen.',
-    link: 'https://www.figma.com/proto/ToDiXK7BejarwcrohqHi8w/BASE---HIFI',
-    linkLabel: 'Bekijk prototype in Figma',
     image: '/base-app-screens.png',
+    screens: ['/base-app-screens.png'],
+    video: '/base-app-demo.mp4',
+    imageFirst: true,
     details: [
       'Voor het vak Human Centered Design ontwierp ik BASE: een app die het leren over toeslagen leuker en toegankelijker maakt voor jongeren, via een quizvorm met directe feedback.',
       'De app is opgebouwd rond een korte intake (taal, situatie: werk, huur, kinderen, zorg) waarna gebruikers gepersonaliseerde quizvragen krijgen over hun eigen situatie.',
@@ -37,9 +39,14 @@ export const projects = [
     color: 'orange',
     summary:
       'Herontwerp van de webshop om de conversieratio te verbeteren — van speelse merkidentiteit tot een duidelijke, vertrouwde koopreis.',
-    link: 'https://www.figma.com/proto/3qn4iiagZT8Sfx5G5IahFW/Schermen-lapswans.nl',
-    linkLabel: 'Bekijk prototype in Figma',
     image: '/lapswans-screenshot.png',
+    screens: ['/lapswans-screenshot.png'],
+    video: '/lapswans-demo.mp4',
+    flyer: '/lapswans-flyer.png',
+    social: [
+      { label: 'Instagram', handle: '@lapswans_', href: 'https://www.instagram.com/lapswans_/' },
+      { label: 'TikTok', handle: '@lapswans_', href: 'https://www.tiktok.com/@lapswans_' },
+    ],
     details: [
       'Lapswans verkocht duurzame, kleurrijke kleding. Als social media- en communicatie-expert bij het bedrijf werkte ik mee aan het herontwerp van hun website, met als doel bezoekers sneller te overtuigen tot een aankoop. Daarnaast ontwierp ik visitekaartjes, flyers, social media stories en posts.',
       'Belangrijk uitgangspunt: bezoekers moesten meer leren over het merk en sneller vertrouwen krijgen om een duurzaam product te kopen.',
