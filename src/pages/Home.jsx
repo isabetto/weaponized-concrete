@@ -114,11 +114,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-                className={`${i === 1 ? 'md:-translate-y-4' : ''}`}
               >
                 <Link
                   to={`/werk#${p.slug}`}
-                  className={`group block h-full rounded-2xl ${cardColorClasses[p.color]} p-7 transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl`}
+                  className={`group block h-full rounded-2xl border-2 border-ink/15 ${cardColorClasses[p.color]} p-7 transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl`}
                 >
                   <p className="font-body text-[11px] font-semibold uppercase tracking-[0.04em] text-ink/60">
                     {p.kicker}
