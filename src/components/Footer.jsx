@@ -5,11 +5,11 @@ export default function Footer() {
   return (
     <footer>
       <StitchDivider bg="bg-tan" thread="#171310" />
-      <div className="bg-tan px-6 py-16 md:px-10 md:py-24">
-        <div className="mx-auto max-w-6xl">
+      <div className="bg-tan px-6 py-16 md:px-10 lg:px-20 md:py-24">
+        <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 md:grid-cols-[1.3fr_1fr]">
             <div>
-              <h2 className="font-display text-4xl font-medium leading-[1.05] text-ink md:text-6xl">
+              <h2 className="font-display text-[32px] font-medium leading-[1.06] text-ink md:text-[44px]">
                 Zin om samen
                 <br />
                 iets te maken?
@@ -23,20 +23,20 @@ export default function Footer() {
 
             <div className="flex flex-col gap-6 font-body text-ink">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink/60">E-mail</p>
-                <a href="mailto:isabettonvil@gmail.com" className="text-lg font-medium hover:text-coral">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-ink/60">E-mail</p>
+                <a href="mailto:isabettonvil@gmail.com" className="text-base font-medium hover:text-coral">
                   isabettonvil@gmail.com
                 </a>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink/60">Telefoon</p>
-                <a href="tel:+31650572518" className="text-lg font-medium hover:text-coral">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-ink/60">Telefoon</p>
+                <a href="tel:+31650572518" className="text-base font-medium hover:text-coral">
                   +31 6 50 57 25 18
                 </a>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink/60">Locatie</p>
-                <p className="text-lg font-medium">&apos;s-Hertogenbosch</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-ink/60">Locatie</p>
+                <p className="text-base font-medium">&apos;s-Hertogenbosch</p>
               </div>
             </div>
           </div>

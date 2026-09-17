@@ -13,7 +13,7 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b-2 border-ink/10 bg-cream/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
         <NavLink
           to="/"
           className="font-display text-xl font-semibold tracking-tight text-ink"
@@ -28,7 +28,7 @@ export default function Nav() {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `font-body text-sm font-semibold uppercase tracking-wide transition-colors ${
+                `font-body text-sm font-semibold uppercase tracking-[0.04em] transition-colors ${
                   isActive ? 'text-coral' : 'text-ink hover:text-coral'
                 }`
               }

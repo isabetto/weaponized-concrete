@@ -50,8 +50,8 @@ const education = [
 export default function About() {
   return (
     <div>
-      <section className="bg-pink px-6 pt-16 pb-20 md:px-10 md:pt-24 md:pb-28">
-        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+      <section className="bg-pink px-6 pt-16 pb-20 md:px-10 lg:px-20 md:pt-24 md:pb-28">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.96, rotate: 2 }}
             animate={{ opacity: 1, scale: 1, rotate: 2 }}
@@ -66,18 +66,18 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
           >
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-ink/70">
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-ink/70">
               Over mij
             </p>
-            <h1 className="mt-4 font-display text-4xl font-medium leading-[1.05] text-ink md:text-6xl">
+            <h1 className="mt-4 font-display text-[32px] font-medium leading-[1.08] text-ink md:text-[44px]">
               Ik houd me bezig met visuele communicatie en UX/UI design.
             </h1>
-            <p className="mt-6 font-body text-lg text-ink/80">
+            <p className="mt-6 font-body text-base leading-[1.5] text-ink/80">
               Onlangs afgestudeerd aan Tilburg University met een master Communicatie- en
               Informatiewetenschappen, specialisatie New Media Design. Analytisch en creatief
               ingesteld, met affiniteit voor digitale interactie en gebruikersgericht ontwerp.
             </p>
-            <p className="mt-4 font-body text-lg text-ink/80">
+            <p className="mt-4 font-body text-base leading-[1.5] text-ink/80">
               Als zelfstandig ondernemer run ik mijn eigen bedrijf, waarin ik creativiteit en
               ondernemerschap combineer. Ik ben nieuwsgierig naar nieuwe technologieën en
               onderzoek graag hoe die waarde toevoegen aan de digitale belevingen.
@@ -88,9 +88,9 @@ export default function About() {
 
       <StitchDivider bg="bg-mustard" thread="#171310" />
 
-      <section className="bg-mustard px-6 py-16 md:px-10 md:py-24">
+      <section className="bg-mustard px-6 py-16 md:px-10 lg:px-20 md:py-24">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-3xl font-medium text-ink md:text-4xl">Werkervaring</h2>
+          <h2 className="font-display text-3xl font-medium text-ink">Werkervaring</h2>
           <div className="mt-10 space-y-0">
             {experience.map((e, i) => (
               <motion.div
@@ -102,26 +102,26 @@ export default function About() {
                 className="relative border-l-2 border-ink/20 py-6 pl-8 last:border-transparent"
               >
                 <span className="absolute -left-[9px] top-7 h-4 w-4 rounded-full border-2 border-ink bg-cream" />
-                <p className="font-body text-xs font-semibold uppercase tracking-wide text-ink/60">
+                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.04em] text-ink/60">
                   {e.period}
                 </p>
-                <h3 className="mt-1 font-display text-xl font-medium text-ink">
+                <h3 className="mt-1 font-display text-[19px] font-medium text-ink">
                   {e.role} — <span className="italic">{e.place}</span>
                 </h3>
-                <p className="mt-2 font-body text-ink/75">{e.body}</p>
+                <p className="mt-2 font-body text-sm leading-[1.45] text-ink/75">{e.body}</p>
               </motion.div>
             ))}
           </div>
 
-          <h2 className="mt-16 font-display text-3xl font-medium text-ink md:text-4xl">Opleidingen</h2>
+          <h2 className="mt-16 font-display text-3xl font-medium text-ink">Opleidingen</h2>
           <div className="mt-8 space-y-6">
             {education.map((ed) => (
               <div key={ed.title} className="rounded-xl bg-cream/60 p-6">
-                <p className="font-body text-xs font-semibold uppercase tracking-wide text-ink/60">
+                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.04em] text-ink/60">
                   {ed.period}
                 </p>
-                <h3 className="mt-1 font-display text-lg font-medium text-ink">{ed.title}</h3>
-                <p className="mt-1 font-body text-sm text-ink/70">{ed.sub}</p>
+                <h3 className="mt-1 font-display text-[17px] font-medium text-ink">{ed.title}</h3>
+                <p className="mt-1 font-body text-[13px] text-ink/70">{ed.sub}</p>
               </div>
             ))}
           </div>

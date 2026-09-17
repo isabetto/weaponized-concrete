@@ -38,24 +38,24 @@ const skills = [
 export default function Home() {
   return (
     <div>
-      <section className="bg-mustard px-6 pt-16 pb-20 md:px-10 md:pt-24 md:pb-28">
-        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+      <section className="bg-mustard px-6 pt-16 pb-20 md:px-10 lg:px-20 md:pt-24 md:pb-28">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-ink/70">
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-ink/70">
               UX/UI designer &middot; Visual communicator
             </p>
-            <h1 className="mt-4 font-display text-5xl font-medium leading-[1.02] text-ink md:text-7xl">
+            <h1 className="mt-4 font-display text-[40px] font-medium leading-[1.04] text-ink md:text-[64px]">
               Ontwerper met een
               <br />
               onderzoekende
               <br />
               <span className="italic text-coral">blik.</span>
             </h1>
-            <p className="mt-6 max-w-md font-body text-lg text-ink/80">
+            <p className="mt-6 max-w-md font-body text-lg leading-[1.45] text-ink/80">
               Ik ben Isa, UX/UI designer die gebruikersonderzoek combineert met een flinke
               dosis kleur, nieuwsgierigheid en doe-het-zelf mentaliteit.
             </p>
@@ -86,15 +86,15 @@ export default function Home() {
 
       <StitchDivider bg="bg-butter" thread="#171310" />
 
-      <section className="bg-butter px-6 py-16 md:px-10 md:py-24">
-        <div className="mx-auto max-w-6xl">
+      <section className="bg-butter px-6 py-16 md:px-10 lg:px-20 md:py-24">
+        <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-display text-4xl font-medium text-ink md:text-5xl">
+            <h2 className="font-display text-3xl font-medium text-ink md:text-4xl">
               Projecten
             </h2>
             <Link
               to="/werk"
-              className="font-body text-sm font-semibold uppercase tracking-wide text-ink underline decoration-coral decoration-2 underline-offset-4 hover:text-coral"
+              className="font-body text-sm font-semibold uppercase text-ink underline decoration-coral decoration-2 underline-offset-4 hover:text-coral"
             >
               Alle projecten →
             </Link>
@@ -114,10 +114,10 @@ export default function Home() {
                   to={`/werk#${p.slug}`}
                   className="group block h-full rounded-2xl bg-cream/80 p-7 transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  <p className="font-body text-xs font-semibold uppercase tracking-wide text-ink/60">
+                  <p className="font-body text-[11px] font-semibold uppercase tracking-[0.04em] text-ink/60">
                     {p.kicker}
                   </p>
-                  <h3 className="mt-3 font-display text-2xl font-medium text-ink">{p.title}</h3>
+                  <h3 className="mt-3 font-display text-[22px] font-medium text-ink">{p.title}</h3>
                   <p className="mt-3 font-body text-sm text-ink/75">{p.summary}</p>
                   <p className="mt-5 font-body text-sm font-semibold text-ink group-hover:text-coral">
                     Bekijk case →
@@ -131,9 +131,9 @@ export default function Home() {
 
       <StitchDivider bg="bg-coral" thread="#fbf7ef" />
 
-      <section className="bg-coral px-6 py-16 md:px-10 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="font-display text-4xl font-medium text-ink md:text-5xl">Skills</h2>
+      <section className="bg-coral px-6 py-16 md:px-10 lg:px-20 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="font-display text-3xl font-medium text-ink md:text-4xl">Skills</h2>
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {skills.map((s, i) => (
               <motion.div

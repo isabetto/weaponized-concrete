@@ -12,15 +12,15 @@ const bgClasses = {
 export default function Work() {
   return (
     <div>
-      <section className="bg-coral px-6 py-16 md:px-10 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <p className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-ink/70">
+      <section className="bg-coral px-6 py-16 md:px-10 lg:px-20 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-ink/70">
             Projecten
           </p>
-          <h1 className="mt-4 max-w-2xl font-display text-4xl font-medium leading-[1.05] text-ink md:text-6xl">
+          <h1 className="mt-4 max-w-2xl font-display text-[36px] font-medium leading-[1.04] text-ink md:text-[64px]">
             Drie projecten, drie manieren van onderzoeken.
           </h1>
-          <p className="mt-6 max-w-xl font-body text-lg text-ink/80">
+          <p className="mt-6 max-w-xl font-body text-lg leading-[1.45] text-ink/80">
             Van e-commerce tot een toeslagen app, hier zie je hoe ik onderzoek, ontwerp en
             resultaat samenbreng.
           </p>
@@ -30,8 +30,8 @@ export default function Work() {
       {projects.map((p, i) => (
         <div key={p.slug}>
           <StitchDivider bg={bgClasses[p.color]} thread="#171310" />
-          <section id={p.slug} className={`${bgClasses[p.color]} scroll-mt-20 px-6 py-16 md:px-10 md:py-24`}>
-            <div className="mx-auto max-w-6xl">
+          <section id={p.slug} className={`${bgClasses[p.color]} scroll-mt-20 px-6 py-16 md:px-10 lg:px-20 md:py-24`}>
+            <div className="mx-auto max-w-7xl">
               <div
                 className={`grid gap-10 md:grid-cols-2 md:items-center ${
                   i % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''
@@ -43,10 +43,10 @@ export default function Work() {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
                 >
-                  <p className="font-body text-xs font-semibold uppercase tracking-wide text-ink/60">
+                  <p className="font-body text-xs font-semibold uppercase tracking-[0.04em] text-ink/60">
                     {p.kicker}
                   </p>
-                  <h2 className="mt-3 font-display text-3xl font-medium text-ink md:text-5xl">
+                  <h2 className="mt-3 font-display text-[26px] font-medium text-ink md:text-[34px]">
                     {p.title}
                   </h2>
                   <div className="mt-3 flex gap-4 font-body text-sm font-semibold text-ink/60">
@@ -55,7 +55,7 @@ export default function Work() {
                     <span>{p.year}</span>
                   </div>
 
-                  <div className="mt-6 space-y-4 font-body text-ink/80">
+                  <div className="mt-6 space-y-4 font-body text-[15px] leading-[1.5] text-ink/80">
                     {p.details.map((d) => (
                       <p key={d.slice(0, 24)}>{d}</p>
                     ))}
