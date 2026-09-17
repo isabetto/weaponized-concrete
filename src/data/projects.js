@@ -6,6 +6,8 @@ export const projects = [
     color: 'pink',
     summary:
       'Een nieuwe website voor een lokale platenzaak, als visitekaartje voor openingstijden, locatie en sfeer.',
+    link: 'https://www.figma.com/proto/NzB8QQUB79mMcSrH0aaVi8/De-langspeelplaat?node-id=1-7&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
+    linkLabel: 'Bekijk prototype in Figma',
     image: '/langspeelplaat-screenshot.png',
     details: [
       'Voor een lokale platenzaak heb ik een nieuwe website ontworpen.',
