@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Work from './pages/Work'
@@ -10,6 +11,7 @@ import Contact from './pages/Contact'
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col bg-cream">
+      <ScrollToTop />
       <Nav />
       <main className="flex-1">
         <Routes>

@@ -18,11 +18,36 @@ export default function Work() {
 
   useEffect(() => {
     if (!location.hash) return
-    const el = document.querySelector(location.hash)
-    if (!el) return
-    requestAnimationFrame(() => {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const scrollToTarget = () => {
+      const el = document.querySelector(location.hash)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+
+    const pendingImages = Array.from(document.images).filter((img) => !img.complete)
+    if (pendingImages.length === 0) {
+      requestAnimationFrame(scrollToTarget)
+      return
+    }
+
+    let remaining = pendingImages.length
+    const onSettle = () => {
+      remaining -= 1
+      if (remaining <= 0) scrollToTarget()
+    }
+    pendingImages.forEach((img) => {
+      img.addEventListener('load', onSettle, { once: true })
+      img.addEventListener('error', onSettle, { once: true })
     })
+
+    const fallback = setTimeout(scrollToTarget, 1500)
+
+    return () => {
+      pendingImages.forEach((img) => {
+        img.removeEventListener('load', onSettle)
+        img.removeEventListener('error', onSettle)
+      })
+      clearTimeout(fallback)
+    }
   }, [location])
 
   return (
