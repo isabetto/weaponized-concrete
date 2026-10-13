@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Work from './pages/Work'
+import Onderzoek from './pages/Onderzoek'
 import Contact from './pages/Contact'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/over-mij" element={<About />} />
           <Route path="/werk" element={<Work />} />
+          <Route path="/onderzoek" element={<Onderzoek />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
