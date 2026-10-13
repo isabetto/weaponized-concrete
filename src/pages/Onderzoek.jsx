@@ -3,6 +3,18 @@ import { theses } from '../data/theses'
 
 const bgClasses = ['bg-tan', 'bg-pink']
 
+function renderBold(text) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={i} className="font-semibold text-ink">
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
+  )
+}
+
 export default function Onderzoek() {
   return (
     <div>
@@ -63,7 +75,11 @@ export default function Onderzoek() {
                 <h3 className="mt-8 font-body text-[11px] font-semibold uppercase tracking-[0.06em] text-ink/60">
                   {t.abstractLabel}
                 </h3>
-                <p className="mt-3 font-body text-[15px] leading-[1.6] text-ink/85">{t.abstract}</p>
+                <div className="mt-3 space-y-4 font-body text-[15px] leading-[1.6] text-ink/85">
+                  {t.abstract.map((paragraph) => (
+                    <p key={paragraph.slice(0, 24)}>{renderBold(paragraph)}</p>
+                  ))}
+                </div>
               </motion.div>
             </div>
           </div>
