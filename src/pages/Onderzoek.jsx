@@ -18,17 +18,17 @@ function renderBold(text) {
 export default function Onderzoek() {
   return (
     <div>
-      <section className="bg-butter px-6 py-16 md:px-10 lg:px-20 md:py-24">
+      <section className="bg-butter px-6 py-12 md:px-10 lg:px-20 md:py-16">
         <div className="mx-auto max-w-7xl">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-ink/70">
             Onderzoek
           </p>
-          <h1 className="mt-4 max-w-2xl font-display text-[36px] font-medium leading-[1.04] text-ink md:text-[64px]">
+          <h1 className="mt-4 font-display text-[36px] font-medium leading-[1.04] text-ink md:text-[64px]">
             Onderzoek achter het ontwerp.
           </h1>
-          <p className="mt-6 max-w-xl font-body text-lg leading-[1.45] text-ink/80">
+          <p className="mt-5 max-w-2xl font-body text-lg leading-[1.45] text-ink/80">
             Mijn bachelorscriptie en masterthesis gaan allebei over hoe ontwerp en onderzoek elkaar
-            versterken, van patiëntenportalen tot AI-desinformatie.
+            versterken, van patiëntenportalen tot AI‑desinformatie.
           </p>
         </div>
       </section>
@@ -37,7 +37,7 @@ export default function Onderzoek() {
         <section
           key={t.slug}
           id={t.slug}
-          className={`${bgClasses[i % bgClasses.length]} scroll-mt-20 px-6 py-16 md:px-10 lg:px-20 md:py-24`}
+          className={`${bgClasses[i % bgClasses.length]} scroll-mt-20 px-6 py-12 md:px-10 lg:px-20 md:py-16`}
         >
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_1.4fr] md:items-start md:gap-16">
