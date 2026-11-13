@@ -1,129 +1,55 @@
-import { motion } from 'framer-motion'
-
-const experience = [
-  {
-    role: 'Barista',
-    place: 'Coffeecompany, \'s-Hertogenbosch',
-    period: 'jun 2024 – heden',
-    body: 'Klantcontact en servicegerichte werkzaamheden.',
-  },
-  {
-    role: 'Eigenaar',
-    place: 'HookedOnMusic',
-    period: 'mei 2023 – heden',
-    body: 'Verkoop en ontwikkeling van haakpatronen. Volledige verantwoordelijkheid voor product, klantcontact en content.',
-  },
-  {
-    role: 'Social media- & communicatie-expert',
-    place: 'Lapswans, Eindhoven',
-    period: 'mei 2024 – jun 2025',
-    body: 'Content voor Instagram, TikTok en LinkedIn met een consistente tone of voice; blogs voor de website.',
-  },
-  {
-    role: 'Student Mentor',
-    place: 'Tilburg University',
-    period: 'aug 2023 – dec 2024',
-    body: 'Begeleidde eerstejaarsstudenten en werkte samen met docenten binnen een multidisciplinaire onderwijsomgeving.',
-  },
-  {
-    role: 'Verkoopmedewerker',
-    place: 'America Today, \'s-Hertogenbosch',
-    period: 'mei 2022 – jun 2024',
-    body: 'Klantgerichte advisering en verkoop in een dynamische retailomgeving.',
-  },
-]
-
-const education = [
-  {
-    title: 'Master Communicatie- en Informatiewetenschappen',
-    sub: 'Specialisatie New Media Design · Tilburg University',
-    period: '2025 – 2026',
-  },
-  {
-    title: 'Bachelor Communicatie- en Informatiewetenschappen',
-    sub: 'Specialisatie New Media Design · Tilburg University',
-    period: '2022 – 2025',
-  },
-]
+import Wrap from '../components/Wrap'
+import Figure from '../components/Figure'
+import usePageTitle from '../components/usePageTitle'
+import { education } from '../data/about'
 
 export default function About() {
+  usePageTitle('Over mij')
   return (
-    <div>
-      <section className="bg-pink px-6 pt-16 pb-20 md:px-10 lg:px-20 md:pt-24 md:pb-28">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, rotate: 2 }}
-            animate={{ opacity: 1, scale: 1, rotate: 2 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-[2rem] border-4 border-ink/10 bg-cream shadow-xl md:mx-0"
-          >
-            <img src="/isa-portrait-about.png" alt="Isa Bettonvil" className="h-full w-full object-cover" />
-          </motion.div>
+    <Wrap className="py-16 md:py-24">
+      <h1 className="font-display text-[44px] font-bold leading-[1] tracking-[-0.03em] md:text-[88px]">Over mij</h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-          >
-            <p className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-ink/70">
-              Over mij
-            </p>
-            <h1 className="mt-4 font-display text-[32px] font-medium leading-[1.08] text-ink md:text-[44px]">
-              Ik houd me bezig met visuele communicatie en UX/UI design.
-            </h1>
-            <p className="mt-6 font-body text-base leading-[1.5] text-ink/80">
+      <div className="mt-14 grid gap-10 md:mt-20 md:grid-cols-12 md:gap-8">
+        <Figure
+          src="/isa-portrait-about.png"
+          alt="Isa Bettonvil"
+          tone="pink"
+          aspect="aspect-[4/5]"
+          className="md:col-span-4"
+        />
+        <div className="md:col-span-7 md:col-start-6">
+          <p className="max-w-[24ch] font-display text-[30px] font-bold leading-[1.1] tracking-[-0.02em] text-balance md:text-[44px]">
+            Ik houd me bezig met <span className="mark-static">visuele communicatie</span> en UX/UI design.
+          </p>
+          <div className="mt-8 max-w-[62ch] space-y-5 font-body text-[19px] leading-[1.65] text-ink">
+            <p>
               Onlangs afgestudeerd aan Tilburg University met een master Communicatie- en
               Informatiewetenschappen, specialisatie New Media Design. Analytisch en creatief
               ingesteld, met affiniteit voor digitale interactie en gebruikersgericht ontwerp.
             </p>
-            <p className="mt-4 font-body text-base leading-[1.5] text-ink/80">
+            <p>
               Als zelfstandig ondernemer run ik mijn eigen bedrijf, waarin ik creativiteit en
-              ondernemerschap combineer. Ik ben nieuwsgierig naar nieuwe technologieën en
-              onderzoek graag hoe die waarde toevoegen aan de digitale belevingen.
+              ondernemerschap combineer. Ik ben nieuwsgierig naar nieuwe technologieën en onderzoek
+              graag hoe die waarde toevoegen aan de digitale belevingen.
             </p>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="bg-mustard px-6 py-16 md:px-10 lg:px-20 md:py-24">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-3xl font-medium text-ink">Werkervaring</h2>
-          <div className="mt-10 space-y-0">
-            {experience.map((e, i) => (
-              <motion.div
-                key={e.role + e.period}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="relative border-l-2 border-ink/20 py-6 pl-8 last:border-transparent"
-              >
-                <span className="absolute -left-[9px] top-7 h-4 w-4 rounded-full border-2 border-ink bg-cream" />
-                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.04em] text-ink/60">
-                  {e.period}
-                </p>
-                <h3 className="mt-1 font-display text-[19px] font-medium text-ink">
-                  {e.role} — <span className="italic">{e.place}</span>
-                </h3>
-                <p className="mt-2 font-body text-sm leading-[1.45] text-ink/75">{e.body}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <h2 className="mt-16 font-display text-3xl font-medium text-ink">Opleidingen</h2>
-          <div className="mt-8 space-y-6">
-            {education.map((ed) => (
-              <div key={ed.title} className="rounded-xl bg-cream/60 p-6">
-                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.04em] text-ink/60">
-                  {ed.period}
-                </p>
-                <h3 className="mt-1 font-display text-[17px] font-medium text-ink">{ed.title}</h3>
-                <p className="mt-1 font-body text-[13px] text-ink/70">{ed.sub}</p>
-              </div>
-            ))}
           </div>
         </div>
+      </div>
+
+      <section className="mt-20 md:mt-28">
+        <h2 className="border-t-2 border-ink pt-5 font-display text-[28px] font-bold tracking-[-0.02em] md:text-[36px]">Opleidingen</h2>
+        <dl className="mt-6">
+          {education.map((ed) => (
+            <div key={ed.title} className="grid gap-1 border-b border-ink/25 py-6 md:grid-cols-12 md:gap-8">
+              <dt className="font-display text-base font-semibold text-muted md:col-span-3">{ed.period}</dt>
+              <dd className="md:col-span-9">
+                <p className="font-display text-xl font-bold md:text-2xl">{ed.title}</p>
+                <p className="mt-1 font-body text-lg text-muted">{ed.sub}</p>
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
-    </div>
+    </Wrap>
   )
 }

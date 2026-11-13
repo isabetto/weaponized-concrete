@@ -1,15 +1,14 @@
 export const projects = [
   {
     slug: 'langspeelplaat',
+    type: 'Website',
+    tone: 'butter',
+    summary: 'Herontwerp van de website om nieuwe klanten te trekken.',
+    skills: ['UI-ontwerp', 'Website-ontwerp', 'Prototyping', 'Visuele communicatie'],
     title: 'Stichting de Langspeelplaat',
-    kicker: 'UI-design · Website',
-    color: 'pink',
-    summary:
-      'Een nieuwe website voor een lokale platenzaak, als visitekaartje voor openingstijden, locatie en sfeer.',
     image: '/langspeelplaat-screenshot.png',
     screens: ['/langspeelplaat-screenshot.png'],
     video: '/langspeelplaat-demo.mp4',
-    frameless: true,
     details: [
       'Voor een lokale platenzaak heb ik een nieuwe website ontworpen.',
       'De website dient vooral als visitekaartje, met openingstijden, locatie en de sfeer van de winkel.',
@@ -17,15 +16,14 @@ export const projects = [
   },
   {
     slug: 'base-app',
+    type: 'Mobiele app',
+    tone: 'olive',
+    summary: 'Een app die jongeren op een laagdrempelige manier leert over toeslagen.',
+    skills: ['UX/UI-ontwerp', 'Prototyping: high-fidelity', 'Usability- en UX-testen', 'Interactieontwerp'],
     title: 'BASE',
-    kicker: 'UI/UX-design · Mobiele app',
-    color: 'mustard',
-    summary:
-      'Een mobiele app die jongeren op een laagdrempelige, quiz-achtige manier leert over toeslagen en belastingvoordelen.',
     image: '/base-app-screens.png',
     screens: ['/base-app-screens.png'],
     video: '/base-app-demo.mp4',
-    imageFirst: true,
     details: [
       'Voor het vak Human Centered Design ontwierp ik BASE: een app die het leren over toeslagen leuker en toegankelijker maakt voor jongeren, via een quizvorm met directe feedback.',
       'De app is opgebouwd rond een korte intake (taal, situatie: werk, huur, kinderen, zorg) waarna gebruikers gepersonaliseerde quizvragen krijgen over hun eigen situatie.',
@@ -34,11 +32,11 @@ export const projects = [
   },
   {
     slug: 'lapswans',
+    type: 'Webshop en social content',
+    tone: 'pink',
+    summary: 'Herontwerp van de webshop om de conversieratio te verbeteren.',
+    skills: ['UI-ontwerp', 'Gebruikersonderzoek en iteraties', 'Contentcreatie en tone-of-voice', 'Visuele communicatie'],
     title: 'Lapswans',
-    kicker: 'Web design (UI) · E-commerce',
-    color: 'orange',
-    summary:
-      'Herontwerp van de webshop om de conversieratio te verbeteren — van speelse merkidentiteit tot een duidelijke, vertrouwde koopreis.',
     image: '/lapswans-screenshot.png',
     screens: ['/lapswans-screenshot.png'],
     video: '/lapswans-demo.mp4',

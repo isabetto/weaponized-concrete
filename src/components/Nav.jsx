@@ -1,39 +1,57 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import Wrap from './Wrap'
 
 const links = [
-  { to: '/over-mij', label: 'Over mij' },
   { to: '/werk', label: 'Projecten' },
   { to: '/onderzoek', label: 'Onderzoek' },
+  { to: '/over-mij', label: 'Over mij' },
   { to: '/contact', label: 'Contact' },
 ]
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const reduced = useReducedMotion()
+
+  // Each menu row is its own block: they unfold downward one by one and fold back upward one by one.
+  const panel = {
+    closed: { transition: { staggerChildren: reduced ? 0 : 0.06, staggerDirection: -1 } },
+    open: { transition: { staggerChildren: reduced ? 0 : 0.08 } },
+  }
+  const row = {
+    closed: { height: 0, opacity: 0, transition: { duration: reduced ? 0 : 0.22, ease: [0.7, 0, 0.84, 0] } },
+    open: { height: 'auto', opacity: 1, transition: { duration: reduced ? 0 : 0.32, ease: [0.16, 1, 0.3, 1] } },
+  }
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [open])
+
+  const linkClass = ({ isActive }) =>
+    `px-1.5 py-0.5 font-display text-[15px] font-semibold text-ink transition-colors hover:bg-marker ${
+      isActive ? 'bg-marker hover:text-ink' : ''
+    }`
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-ink/10 bg-cream/90 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
+    <header className="sticky top-0 z-50 bg-paper">
+      <Wrap className="flex h-16 items-center justify-between md:grid md:h-[103px] md:grid-cols-[1fr_auto_1fr]">
         <NavLink
           to="/"
-          className="font-display text-xl font-semibold tracking-tight text-ink"
+          end
+          className="flex flex-col font-display leading-tight text-ink"
           onClick={() => setOpen(false)}
         >
-          Portfolio - Isa Bettonvil
+          <span className="text-xl font-bold tracking-[-0.02em]">Isa Bettonvil</span>
+          <span className="text-xs font-medium text-muted">UX/UI Designer</span>
         </NavLink>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Hoofdmenu" className="hidden items-center gap-12 md:flex">
           {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              className={({ isActive }) =>
-                `font-body text-sm font-semibold uppercase tracking-[0.04em] transition-colors ${
-                  isActive ? 'text-coral' : 'text-ink hover:text-coral'
-                }`
-              }
-            >
+            <NavLink key={l.to} to={l.to} className={linkClass}>
               {l.label}
             </NavLink>
           ))}
@@ -41,46 +59,44 @@ export default function Nav() {
 
         <button
           type="button"
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="-mr-2 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
           aria-label={open ? 'Sluit menu' : 'Open menu'}
           aria-expanded={open}
+          aria-controls="mobiel-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          <span
-            className={`block h-0.5 w-6 bg-ink transition-transform ${open ? 'translate-y-2 rotate-45' : ''}`}
-          />
+          <span className={`block h-0.5 w-6 bg-ink transition-transform ${open ? 'translate-y-2 rotate-45' : ''}`} />
           <span className={`block h-0.5 w-6 bg-ink transition-opacity ${open ? 'opacity-0' : ''}`} />
-          <span
-            className={`block h-0.5 w-6 bg-ink transition-transform ${open ? '-translate-y-2 -rotate-45' : ''}`}
-          />
+          <span className={`block h-0.5 w-6 bg-ink transition-transform ${open ? '-translate-y-2 -rotate-45' : ''}`} />
         </button>
-      </div>
+      </Wrap>
 
       <AnimatePresence>
         {open && (
           <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="overflow-hidden border-t-2 border-ink/10 md:hidden"
+            id="mobiel-menu"
+            aria-label="Hoofdmenu"
+            variants={panel}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="absolute inset-x-0 top-full md:hidden"
           >
-            <div className="flex flex-col gap-1 px-6 py-4">
-              {links.map((l) => (
-                <NavLink
-                  key={l.to}
-                  to={l.to}
-                  onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    `rounded-lg px-3 py-3 font-body text-base font-semibold uppercase tracking-wide ${
-                      isActive ? 'bg-butter text-ink' : 'text-ink hover:bg-pink'
-                    }`
-                  }
-                >
-                  {l.label}
-                </NavLink>
-              ))}
-            </div>
+            {links.map((l) => (
+              <motion.div key={l.to} variants={row} className="overflow-hidden border-b border-ink/20 bg-paper">
+                <Wrap>
+                  <NavLink
+                    to={l.to}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      `block py-4 font-display text-xl font-semibold ${isActive ? 'bg-marker' : 'text-ink'}`
+                    }
+                  >
+                    {l.label}
+                  </NavLink>
+                </Wrap>
+              </motion.div>
+            ))}
           </motion.nav>
         )}
       </AnimatePresence>

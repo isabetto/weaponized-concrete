@@ -5,7 +5,7 @@ export const theses = [
     level: 'Bachelorscriptie',
     title:
       'De Toepassing van User-Centered Design en de User Experience van Patiënten bij het Gebruik van een Patiëntenportaal: Systematische Review',
-    meta: ['Communicatie- en Informatiewetenschappen', 'Specialisatie New Media Design', 'Tilburg University', 'Juni 2025'],
+    date: 'Juni 2025',
     cover: '/thesis-bachelor-cover.png',
     coverAlt: 'Voorpagina van de bachelorscriptie van Isa Bettonvil',
     abstractLabel: 'Samenvatting',
@@ -19,7 +19,7 @@ export const theses = [
     level: 'Masterthesis',
     title:
       'Is this AI? An Experimental Study Using a Narrative Inoculation Game to Improve Resistance to AI-Generated Disinformation Videos',
-    meta: ['Communicatie- en Informatiewetenschappen', 'Specialisatie New Media Design', 'Tilburg University', 'Juli 2026'],
+    date: 'Juli 2026',
     cover: '/thesis-master-cover.png',
     coverAlt: 'Voorpagina van de masterthesis van Isa Bettonvil',
     abstractLabel: 'Samenvatting',

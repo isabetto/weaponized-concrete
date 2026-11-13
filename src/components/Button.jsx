@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 
 const base =
-  'inline-flex items-center gap-2 rounded-full px-6 py-3 font-body font-semibold text-sm transition-all duration-200 ease-out'
+  'inline-flex items-center justify-center gap-2 px-6 py-3.5 font-display text-[15px] font-semibold transition-colors duration-200'
 
 const variants = {
-  primary: 'bg-ink text-cream hover:bg-white hover:text-ink hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/10',
-  ghost: 'bg-transparent text-ink border-2 border-ink hover:bg-ink hover:text-cream hover:-translate-y-0.5',
-  onDark: 'bg-cream text-ink hover:bg-white hover:-translate-y-0.5',
+  primary: 'bg-ink text-paper hover:bg-plum',
+  ghost: 'border-2 border-ink text-ink hover:bg-ink hover:text-paper',
+  marker: 'bg-marker text-ink hover:bg-paper',
 }
 
 export default function Button({ to, href, variant = 'primary', children, className = '', ...props }) {
@@ -26,7 +26,7 @@ export default function Button({ to, href, variant = 'primary', children, classN
     )
   }
   return (
-    <button className={cls} {...props}>
+    <button type="button" className={cls} {...props}>
       {children}
     </button>
   )

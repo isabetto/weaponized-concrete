@@ -1,35 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-mustard: #c7b65c;
-  --color-mustard-dark: #a9974a;
-  --color-pink: #f7b3cc;
-  --color-pink-dark: #e88cb0;
-  --color-tan: #f3e7d7;
-  --color-tan-dark: #e3d0b5;
-  --color-orange: #f3a632;
-  --color-orange-dark: #d98e1f;
-  --color-butter: #f7e28e;
-  --color-butter-dark: #e8c94f;
-  --color-cream: #fbf7ef;
-  --color-ink: #171310;
-  --color-coral: #ee583f;
-  --color-coral-dark: #c9412a;
+  --color-paper: #f9f1de;
+  --color-ink: #54152a;
+  --color-muted: #6a2a3d;
+  --color-plum: #54152a;
+  --color-olive: #9e8e43;
+  --color-butter: #ece398;
+  --color-marker: #e3a3a4;
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+  scrollbar-color: var(--color-plum) var(--color-paper);
 }
 
 body {
   margin: 0;
-  background: var(--color-cream);
+  background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-body);
+  font-optical-sizing: auto;
+}
+
+::selection {
+  background: var(--color-marker);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-plum);
+  outline-offset: 3px;
+}
+
+.on-plum :focus-visible {
+  outline-color: var(--color-butter);
+}
+
+/* The highlighter on the home headline. Each letter carries a marked copy of itself that is revealed
+   from the left by --c (0..1), so the marker edge moves smoothly and the text stays crisp. */
+.hl {
+  position: relative;
+  color: var(--color-paper);
+}
+
+.hl::before {
+  content: attr(data-c);
+  position: absolute;
+  inset: 0 -1px;
+  padding: 0 1px;
+  white-space: pre;
+  color: var(--color-ink);
+  background: var(--color-marker);
+  clip-path: inset(0 calc((1 - var(--c, 0)) * 100%) 0 0);
+  pointer-events: none;
+}
+
+.mark-static {
+  color: var(--color-ink);
+  background-image: linear-gradient(var(--color-marker), var(--color-marker));
+  background-repeat: no-repeat;
+  background-position: 0 90%;
+  background-size: 100% 0.7em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Placeholder plates: hatched like an unprinted area on the poster. */
+.hatch {
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 11px,
+    rgb(84 21 42 / 0.1) 11px,
+    rgb(84 21 42 / 0.1) 12px
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -41,9 +91,4 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-:focus-visible {
-  outline: 3px solid var(--color-coral);
-  outline-offset: 3px;
 }

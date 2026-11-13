@@ -1,50 +1,48 @@
+import Wrap from './Wrap'
 import Button from './Button'
+
+const details = [
+  { label: 'E-mail', value: 'isabettonvil@gmail.com', href: 'mailto:isabettonvil@gmail.com' },
+  { label: 'Telefoon', value: '+31 6 50 57 25 18', href: 'tel:+31650572518' },
+  { label: 'Locatie', value: "'s-Hertogenbosch", href: null },
+]
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="bg-tan px-6 py-16 md:px-10 lg:px-20 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 md:grid-cols-[1.3fr_1fr]">
-            <div>
-              <h2 className="font-display text-[32px] font-medium leading-[1.06] text-ink md:text-[44px]">
-                Zin om samen
-                <br />
-                iets te maken?
-              </h2>
-              <div className="mt-8">
-                <Button to="/contact" variant="primary">
-                  Neem contact op ↗
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-6 font-body text-ink">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-ink/60">E-mail</p>
-                <a href="mailto:isabettonvil@gmail.com" className="text-base font-medium hover:text-coral">
-                  isabettonvil@gmail.com
-                </a>
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-ink/60">Telefoon</p>
-                <a href="tel:+31650572518" className="text-base font-medium hover:text-coral">
-                  +31 6 50 57 25 18
-                </a>
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-ink/60">Locatie</p>
-                <p className="text-base font-medium">&apos;s-Hertogenbosch</p>
-              </div>
+    <footer className="on-plum bg-plum py-16 text-paper md:py-24">
+      <Wrap>
+        <div className="grid gap-12 md:grid-cols-12 md:gap-8">
+          <div className="md:col-span-7">
+            <h2 className="max-w-[14ch] font-display text-[40px] font-bold leading-[1.02] tracking-[-0.03em] md:text-[64px]">
+              Zin om samen iets te maken?
+            </h2>
+            <div className="mt-8">
+              <Button to="/contact" variant="marker">
+                Neem contact op
+              </Button>
             </div>
           </div>
-
-          <div className="mt-16 flex flex-col-reverse items-center justify-between gap-4 border-t-2 border-ink/10 pt-6 text-xs font-body text-ink/60 md:flex-row">
-            <p>&copy; {new Date().getFullYear()} Isa Bettonvil.</p>
-            <p>UX/UI Designer &amp; Visual Communicator</p>
-          </div>
+          <dl className="grid gap-6 md:col-span-4 md:col-start-9 md:content-end">
+            {details.map((d) => (
+              <div key={d.label} className="border-t border-paper/40 pt-3">
+                <dt className="font-display text-sm font-medium text-paper/90">{d.label}</dt>
+                <dd className="mt-1 font-body text-lg">
+                  {d.href ? (
+                    <a href={d.href} className="underline decoration-paper/60 underline-offset-4 hover:bg-marker hover:text-ink hover:no-underline">
+                      {d.value}
+                    </a>
+                  ) : (
+                    d.value
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
-      </div>
+        <p className="mt-16 border-t border-paper/40 pt-5 font-body text-sm text-paper/90">
+          &copy; {new Date().getFullYear()} Isa Bettonvil &middot; UX/UI Designer &amp; Visual Communicator
+        </p>
+      </Wrap>
     </footer>
   )
 }

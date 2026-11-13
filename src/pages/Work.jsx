@@ -1,140 +1,48 @@
-import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import Button from '../components/Button'
-import ProjectLightbox from '../components/ProjectLightbox'
+import { Link } from 'react-router-dom'
+import Wrap from '../components/Wrap'
+import usePageTitle from '../components/usePageTitle'
 import { projects } from '../data/projects'
 
-const bgClasses = {
-  orange: 'bg-orange',
-  mustard: 'bg-mustard',
-  pink: 'bg-pink',
-}
-
 export default function Work() {
-  const [activeSlug, setActiveSlug] = useState(null)
-  const activeProject = projects.find((p) => p.slug === activeSlug) ?? null
-  const location = useLocation()
-
-  useEffect(() => {
-    if (!location.hash) return
-    const scrollToTarget = () => {
-      const el = document.querySelector(location.hash)
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-
-    const pendingImages = Array.from(document.images).filter((img) => !img.complete)
-    if (pendingImages.length === 0) {
-      requestAnimationFrame(scrollToTarget)
-      return
-    }
-
-    let remaining = pendingImages.length
-    const onSettle = () => {
-      remaining -= 1
-      if (remaining <= 0) scrollToTarget()
-    }
-    pendingImages.forEach((img) => {
-      img.addEventListener('load', onSettle, { once: true })
-      img.addEventListener('error', onSettle, { once: true })
-    })
-
-    const fallback = setTimeout(scrollToTarget, 1500)
-
-    return () => {
-      pendingImages.forEach((img) => {
-        img.removeEventListener('load', onSettle)
-        img.removeEventListener('error', onSettle)
-      })
-      clearTimeout(fallback)
-    }
-  }, [location])
-
+  usePageTitle('Projecten')
   return (
-    <div>
-      <section className="bg-coral px-6 py-16 md:px-10 lg:px-20 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <p className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-ink/70">
-            Projecten
-          </p>
-          <h1 className="mt-4 max-w-2xl font-display text-[36px] font-medium leading-[1.04] text-ink md:text-[64px]">
-            Drie projecten, drie manieren van onderzoeken.
-          </h1>
-          <p className="mt-6 max-w-xl font-body text-lg leading-[1.45] text-ink/80">
-            Van e-commerce tot een toeslagen app, hier zie je hoe ik onderzoek, ontwerp en
-            resultaat samenbreng.
-          </p>
-        </div>
-      </section>
+    <Wrap className="py-16 md:py-24">
+      <h1 className="font-display text-[44px] font-bold leading-[1] tracking-[-0.03em] md:text-[88px]">Projecten</h1>
+      <p className="mt-6 max-w-[48ch] font-body text-xl leading-[1.5] text-muted">
+        Van een website voor een platenzaak tot een toeslagen-app: drie projecten waarin onderzoek en
+        ontwerp samenkomen.
+      </p>
 
-      {projects.map((p) => (
-          <section key={p.slug} id={p.slug} className={`${bgClasses[p.color]} scroll-mt-20 px-6 py-16 md:px-10 lg:px-20 md:py-24`}>
-            <div className="mx-auto max-w-7xl">
-              <div
-                className={`grid gap-10 md:grid-cols-2 md:items-center ${
-                  p.imageFirst ? 'md:[&>*:first-child]:order-2' : ''
-                }`}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                >
-                  <p className="font-body text-xs font-semibold uppercase tracking-[0.04em] text-ink/60">
-                    {p.kicker}
-                  </p>
-                  <h2 className="mt-3 font-display text-[26px] font-medium text-ink md:text-[34px]">
-                    {p.title}
-                  </h2>
-
-                  <div className="mt-6 space-y-4 font-body text-[15px] leading-[1.5] text-ink/80">
-                    {p.details.map((d) => (
-                      <p key={d.slice(0, 24)}>{d}</p>
-                    ))}
-                  </div>
-
-                  {(p.screens?.length || p.image) && (
-                    <div className="mt-8">
-                      <Button variant="ghost" onClick={() => setActiveSlug(p.slug)}>
-                        Bekijk ↗
-                      </Button>
-                    </div>
-                  )}
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
-                  className={
-                    p.frameless
-                      ? 'overflow-hidden rounded-2xl'
-                      : 'overflow-hidden rounded-2xl border-4 border-ink/10 bg-cream shadow-xl'
-                  }
-                >
-                  {p.image && (
-                    <button
-                      type="button"
-                      onClick={() => setActiveSlug(p.slug)}
-                      className="block h-full w-full cursor-zoom-in"
-                      aria-label={`Bekijk schermen van ${p.title}`}
-                    >
-                      <img
-                        src={p.image}
-                        alt={`Werk voor ${p.title}`}
-                        className="h-full w-full object-cover"
-                      />
-                    </button>
-                  )}
-                </motion.div>
+      <ol className="mt-14 border-t-2 border-ink md:mt-20">
+        {projects.map((p) => (
+          <li key={p.slug} className="border-b border-ink/25">
+            <Link
+              to={`/werk/${p.slug}`}
+              className="group grid items-center gap-5 py-8 md:grid-cols-12 md:gap-8 md:py-10"
+            >
+              <div className="relative flex aspect-[16/10] items-center justify-center bg-paper p-5 ring-1 ring-ink/25 md:col-span-3">
+                <img src={p.image} alt="" className="h-auto max-h-full w-auto max-w-full object-contain" />
               </div>
-            </div>
-          </section>
-      ))}
-
-      <ProjectLightbox project={activeProject} onClose={() => setActiveSlug(null)} />
-    </div>
+              <div className="md:col-span-6">
+                <h2 className="font-display text-[30px] font-bold leading-[1.05] tracking-[-0.02em] md:text-[44px]">
+                  <span className="bg-[linear-gradient(var(--color-marker),var(--color-marker))] bg-[length:0%_0.7em] bg-[position:0_90%] bg-no-repeat transition-[background-size] duration-300 ease-out group-hover:bg-[length:100%_0.7em]">
+                    {p.title}
+                  </span>
+                </h2>
+                <p className="mt-3 max-w-[44ch] font-body text-lg leading-[1.5] text-muted">{p.summary}</p>
+              </div>
+              <div className="md:col-span-3">
+                <p className="font-display text-sm font-semibold text-ink">{p.type}</p>
+                <ul className="mt-2 space-y-0.5 font-display text-sm text-muted">
+                  {p.skills.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </Wrap>
   )
 }
