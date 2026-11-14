@@ -208,11 +208,11 @@ export default function Case() {
         </div>
       </Wrap>
 
-      <section className="on-plum bg-plum text-paper">
+      <section className="border-y-2 border-ink bg-paper text-ink">
         <Wrap>
           <Link to={`/werk/${next.slug}`} className="group flex flex-col justify-between gap-6 py-14 md:flex-row md:items-end md:py-20">
-            <span className="font-display text-xl font-medium text-paper/90">Volgende project</span>
-            <span className="font-display text-[40px] font-bold leading-[1] tracking-[-0.03em] group-hover:underline group-hover:decoration-marker group-hover:decoration-4 group-hover:underline-offset-8 md:text-[72px]">
+            <span className="font-display text-xl font-bold">Volgende project</span>
+            <span className="font-display text-[40px] font-bold leading-[1] tracking-[-0.03em] group-hover:underline group-hover:decoration-ink group-hover:decoration-4 group-hover:underline-offset-8 md:text-[72px]">
               {next.title} &rarr;
             </span>
           </Link>
