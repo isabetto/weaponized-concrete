@@ -6,7 +6,7 @@ import { theses } from '../data/theses'
 function renderBold(text) {
   return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
     i % 2 === 1 ? (
-      <strong key={i} className="mark-static font-semibold">
+      <strong key={i} className="font-bold">
         {part}
       </strong>
     ) : (

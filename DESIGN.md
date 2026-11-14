@@ -21,8 +21,8 @@ Palette supplied by Isa (her own reference image, blue removed): cream, olive, b
 - Section rule: 2px ink line above poster section headings (Context, Aanpak, Resultaat).
 - Nav: hairline bottom border; active link marked with the highlighter.
 
-## Illustration
-Isa's own drawing of her head (`public/isa-head.png`, cut out of her artwork) on a butter circle (`src/components/IsaDrawing.jsx`), right of the hero text on screens 1280px and wider only. No body: she preferred the head alone.
+## Portrait
+Isa's own photo from the first version of the site (`public/isa-photo.png`, background removed with macOS Vision, processed locally) in a butter circle, clipped by the circle at the bottom (`src/components/IsaPortrait.jsx`). Right of the hero text on screens 1280px and wider only. The earlier drawn head was dropped at her request.
 
 ## Motion
 One authored moment: the highlighter on the home headline. It starts a quarter of the way along "onderzoekende blik." and has two inputs, latest one wins. Moving the mouse over the phrase sets how far the marker has travelled (pointer at the first letter is 0, at the last letter is everything). Scrolling also moves it, for people who only scroll and for touch screens: down moves it right, up moves it back, over the first 220px of scroll on wide screens and 140px on narrow ones. The edge is eased every frame and slides through the letters rather than jumping. Everything else is a hover state. Reduced motion shows the position directly without easing.

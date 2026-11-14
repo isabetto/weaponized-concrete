@@ -1,11 +1,23 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import Wrap from '../components/Wrap'
-import Button from '../components/Button'
 import Figure, { Placeholder } from '../components/Figure'
-import ProjectLightbox from '../components/ProjectLightbox'
+import SitePreview from '../components/SitePreview'
 import usePageTitle from '../components/usePageTitle'
-import { projects } from '../data/projects'
+import { projects, previewLabel } from '../data/projects'
+
+/* Text with **key phrases** set in bold, so the case can be scanned. */
+function Marked({ text }) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 ? (
+      <strong key={i} className="font-bold">
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
+  )
+}
 
 function Block({ title, children }) {
   return (
@@ -29,7 +41,8 @@ export default function Case() {
   const { slug } = useParams()
   const index = projects.findIndex((p) => p.slug === slug)
   const p = projects[index]
-  const [open, setOpen] = useState(false)
+  const [site, setSite] = useState(false)
+  const closeSite = useCallback(() => setSite(false), [])
   usePageTitle(p?.title ?? '')
   if (!p) return <Navigate to="/werk" replace />
   const next = projects[(index + 1) % projects.length]
@@ -66,13 +79,10 @@ export default function Case() {
           alt={`Werk voor ${p.title}`}
           tone={p.tone}
           aspect="aspect-[16/9]"
-          onClick={() => setOpen(true)}
-          label={`Bekijk demo van ${p.title}`}
+          onClick={p.preview ? () => setSite(true) : undefined}
+          label={p.preview ? previewLabel(p) : undefined}
           className="mt-12 md:mt-16"
         />
-        <div className="mt-6">
-          <Button onClick={() => setOpen(true)}>Bekijk demo</Button>
-        </div>
 
         <div className="mt-20 space-y-16 md:mt-28 md:space-y-24">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
@@ -80,47 +90,110 @@ export default function Case() {
               <Block title="Context">
                 <div className="space-y-4 font-body text-[19px] leading-[1.6] text-ink">
                   {p.details.map((d) => (
-                    <p key={d.slice(0, 24)}>{d}</p>
+                    <p key={d.slice(0, 24)}>
+                      <Marked text={d} />
+                    </p>
                   ))}
                 </div>
               </Block>
             </div>
             <div className="md:col-span-6 md:col-start-7 md:self-end">
-              <Placeholder label={`Beeld van de uitgangssituatie van ${p.title}, bijvoorbeeld de oude site of een schets`} />
+              {p.before ? (
+                <img src={p.before.src} alt={p.before.alt} className="block h-auto w-full ring-1 ring-ink/25" />
+              ) : p.aside ? (
+                <figure className="bg-butter p-8 md:p-10">
+                  <figcaption className="font-display text-base font-semibold text-muted">{p.aside.label}</figcaption>
+                  <blockquote className="mt-3 font-display text-[26px] font-bold leading-[1.15] tracking-[-0.02em] text-ink md:text-[34px]">
+                    {p.aside.text}
+                  </blockquote>
+                </figure>
+              ) : (
+                <Placeholder label={`Beeld van de uitgangssituatie van ${p.title}, bijvoorbeeld de oude site of een schets`} />
+              )}
             </div>
           </div>
 
-          <div className="grid gap-10 md:grid-cols-12 md:gap-8">
-            <div className="md:col-span-5">
-              <Block title="Aanpak">
-                <PlaceholderText>
-                  Beschrijf in drie of vier zinnen hoe je te werk ging: welk onderzoek, welke
-                  ontwerpkeuzes en welke tests. Noem ook je rol en de periode.
-                </PlaceholderText>
-              </Block>
+          {p.steps ? (
+            <section className="border-t-2 border-ink pt-5">
+              <h2 className="font-display text-[28px] font-bold leading-[1.1] tracking-[-0.02em] md:text-[36px]">Aanpak</h2>
+              <div className="mt-8 space-y-14 md:mt-10 md:space-y-20">
+                {p.steps.map((step, i) => (
+                  <div key={step.title} className="grid gap-8 md:grid-cols-12 md:gap-8">
+                    <div className="md:col-span-5">
+                      <h3 className="font-display text-[22px] font-semibold leading-[1.2] text-ink">
+                        <span className="mr-3 inline-block min-w-[1.5em] bg-marker px-2 text-center">{i + 1}</span>
+                        {step.title}
+                      </h3>
+                      <div className="mt-4 space-y-4 font-body text-[19px] leading-[1.6] text-ink">
+                        {step.text.map((t) => (
+                          <p key={t.slice(0, 24)}>
+                            <Marked text={t} />
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                    {step.image && (
+                      <div className="md:col-span-6 md:col-start-7">
+                        <img
+                          src={step.image.src}
+                          alt={step.image.alt}
+                          className={`block h-auto w-full ring-1 ring-ink/25 ${step.image.narrow ? 'max-w-[440px]' : ''}`}
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : (
+            <div className="grid gap-10 md:grid-cols-12 md:gap-8">
+              <div className="md:col-span-5">
+                <Block title="Aanpak">
+                  <PlaceholderText>
+                    Beschrijf in drie of vier zinnen hoe je te werk ging: welk onderzoek, welke
+                    ontwerpkeuzes en welke tests. Noem ook je rol en de periode.
+                  </PlaceholderText>
+                </Block>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2 md:col-span-6 md:col-start-7">
+                <Placeholder label="Schetsen of wireframes" aspect="aspect-[4/5]" />
+                <Placeholder label="Testresultaten of inzichten" aspect="aspect-[4/5]" />
+              </div>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 md:col-span-6 md:col-start-7">
-              <Placeholder label="Schetsen of wireframes" aspect="aspect-[4/5]" />
-              <Placeholder label="Testresultaten of inzichten" aspect="aspect-[4/5]" />
-            </div>
-          </div>
+          )}
 
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="md:col-span-5">
               <Block title="Resultaat">
-                <PlaceholderText>
-                  Wat leverde het op? Benoem alleen wat je kunt onderbouwen, zoals een
-                  testbevinding, een aangepast ontwerp of feedback van de opdrachtgever.
-                </PlaceholderText>
+                {p.result ? (
+                  <div className="space-y-4 font-body text-[19px] leading-[1.6] text-ink">
+                    {p.result.text.map((t) => (
+                      <p key={t.slice(0, 24)}>
+                            <Marked text={t} />
+                          </p>
+                    ))}
+                  </div>
+                ) : (
+                  <PlaceholderText>
+                    Wat leverde het op? Benoem alleen wat je kunt onderbouwen, zoals een
+                    testbevinding, een aangepast ontwerp of feedback van de opdrachtgever.
+                  </PlaceholderText>
+                )}
               </Block>
             </div>
-            <div className="md:col-span-6 md:col-start-7">
-              <Placeholder label="Eindontwerp in context, bijvoorbeeld op een apparaat" />
-            </div>
+            {(!p.result || p.result.image) && (
+              <div className="md:col-span-6 md:col-start-7">
+                {p.result ? (
+                  <img src={p.result.image.src} alt={p.result.image.alt} className="block h-auto w-full ring-1 ring-ink/25" />
+                ) : (
+                  <Placeholder label="Eindontwerp in context, bijvoorbeeld op een apparaat" />
+                )}
+              </div>
+            )}
           </div>
 
           {p.social?.length > 0 && (
-            <Block title="Online">
+            <Block title="Socials">
               <ul className="flex flex-wrap gap-x-8 gap-y-2 font-display text-lg font-semibold">
                 {p.social.map((s) => (
                   <li key={s.href}>
@@ -146,7 +219,7 @@ export default function Case() {
         </Wrap>
       </section>
 
-      <ProjectLightbox project={open ? p : null} onClose={() => setOpen(false)} />
+      <SitePreview project={site ? p : null} onClose={closeSite} />
     </>
   )
 }

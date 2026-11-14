@@ -40,7 +40,7 @@ export default function Footer() {
           </dl>
         </div>
         <p className="mt-16 border-t border-paper/40 pt-5 font-body text-sm text-paper/90">
-          &copy; {new Date().getFullYear()} Isa Bettonvil &middot; UX/UI Designer &amp; Visual Communicator
+          &copy; {new Date().getFullYear()} Isa Bettonvil &middot; UX/UI Designer
         </p>
       </Wrap>
     </footer>

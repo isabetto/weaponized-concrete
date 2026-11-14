@@ -12,7 +12,7 @@ Primary: recruiters, design leads and hiring managers at agencies and in-house t
 
 ## Product Purpose
 
-Personal portfolio of Isa Bettonvil, UX/UI designer and visual communicator from 's-Hertogenbosch, freshly graduated (MSc Communication and Information Sciences, New Media Design, Tilburg University, July 2026). Success: a hiring reader understands within seconds that she designs *and* researches, opens at least one case, and emails or calls her.
+Personal portfolio of Isa Bettonvil, UX/UI designer from 's-Hertogenbosch, freshly graduated (MSc Communication and Information Sciences, New Media Design, Tilburg University, July 2026). Success: a hiring reader understands within seconds that she designs *and* researches, opens at least one case, and emails or calls her.
 
 ## Positioning
 
@@ -34,7 +34,7 @@ Read in a browser, mostly desktop, often opened from a link. Reader time is shor
 
 ## Brand Commitments
 
-- Name: Isa Bettonvil. Title: "UX/UI Designer & Visual Communicator".
+- Name: Isa Bettonvil. Title: "UX/UI Designer" (no "junior", no "Visual Communicator", at her request).
 - Self-described voice: "een flinke dosis kleur, nieuwsgierigheid en doe-het-zelf mentaliteit". Warm, direct, informal Dutch.
 - Binding requests from Isa: no needless eyebrow (small uppercase) labels; all colour pairings WCAG AA compliant; everything cleanly aligned.
 - Colour (revised 2026-11-12, final): Isa supplied her own palette image (cream, olive, butter, dusty pink, plum; blue explicitly excluded, brown removed). It is the binding palette; see DESIGN.md. Text on it must pass WCAG AA.

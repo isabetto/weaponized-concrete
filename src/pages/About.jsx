@@ -15,6 +15,7 @@ export default function About() {
           alt="Isa Bettonvil"
           tone="pink"
           aspect="aspect-[4/5]"
+          imageClassName="rounded-[28px]"
           className="md:col-span-4"
         />
         <div className="md:col-span-7 md:col-start-6">

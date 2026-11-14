@@ -1,4 +1,4 @@
-import Wrap from '../components/Wrap'
+import { motion, useReducedMotion } from 'framer-motion'
 import Button from '../components/Button'
 import usePageTitle from '../components/usePageTitle'
 
@@ -10,42 +10,61 @@ const details = [
 
 export default function Contact() {
   usePageTitle('Contact')
-  return (
-    <section className="on-plum bg-plum py-16 text-paper md:py-28">
-      <Wrap>
-        <h1 className="max-w-[12ch] font-display text-[48px] font-bold leading-[0.98] tracking-[-0.03em] text-balance md:text-[96px]">
-          Zin om samen iets te maken?
-        </h1>
-        <p className="mt-8 max-w-[44ch] font-body text-xl leading-[1.5] text-paper">
-          Stuur me gerust een bericht over een project, samenwerking of gewoon om kennis te maken.
-          Ik hoor graag van je!
-        </p>
-        <div className="mt-8">
-          <Button href="mailto:isabettonvil@gmail.com" variant="marker">
-            Stuur een e-mail
-          </Button>
-        </div>
+  const reduce = useReducedMotion()
+  // Same staggered fade-up as the first version, switched off for people who prefer reduced motion.
+  const rise = (delay = 0, y = 14) =>
+    reduce
+      ? {}
+      : { initial: { opacity: 0, y }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.55, delay } }
 
-        <dl className="mt-16 grid gap-6 md:mt-24 md:grid-cols-3 md:gap-8">
-          {details.map((d) => (
-            <div key={d.label} className="border-t border-paper/40 pt-3">
-              <dt className="font-display text-sm font-medium text-paper/90">{d.label}</dt>
-              <dd className="mt-1 font-body text-xl">
+  return (
+    <section className="flex bg-butter px-6 pb-20 pt-16 md:min-h-[calc(100vh-103px)] md:items-center md:px-10 md:pb-[120px] md:pt-[100px]">
+      <div className="mx-auto w-full max-w-3xl text-center">
+        <motion.h1
+          {...rise(0.05)}
+          className="font-display text-[40px] font-bold leading-[1.05] tracking-[-0.03em] text-ink text-balance md:text-[72px]"
+        >
+          Zin om samen iets te maken?
+        </motion.h1>
+        <motion.p {...rise(0.1)} className="mx-auto mt-6 max-w-[44ch] font-body text-xl leading-[1.5] text-ink">
+          Stuur me gerust een bericht over een project, samenwerking of gewoon om kennis te maken. Ik hoor graag van
+          je!
+        </motion.p>
+
+        <motion.div {...rise(0.15)} className="mt-10">
+          <Button href="mailto:isabettonvil@gmail.com" className="rounded-full hover:bg-paper! hover:text-ink!">
+            Stuur een e-mail ↗
+          </Button>
+        </motion.div>
+
+        <dl className="mt-16 grid gap-4 text-left sm:grid-cols-3">
+          {details.map((d, i) => (
+            <motion.div
+              key={d.label}
+              {...(reduce
+                ? {}
+                : {
+                    initial: { opacity: 0, y: 16 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true, amount: 0.5 },
+                    transition: { duration: 0.4, delay: i * 0.08 },
+                  })}
+              className="rounded-2xl bg-paper/70 p-6"
+            >
+              <dt className="font-display text-sm font-medium text-muted">{d.label}</dt>
+              <dd className="mt-2 font-display text-[17px] font-semibold text-ink">
                 {d.href ? (
-                  <a href={d.href} className="underline decoration-paper/60 underline-offset-4 hover:bg-marker hover:text-ink hover:no-underline">
+                  <a href={d.href} className="underline decoration-ink/40 underline-offset-4 hover:bg-marker hover:no-underline">
                     {d.value}
                   </a>
                 ) : (
                   d.value
                 )}
               </dd>
-            </div>
+            </motion.div>
           ))}
         </dl>
-        <p className="mt-16 border-t border-paper/40 pt-5 font-body text-sm text-paper/90">
-          &copy; {new Date().getFullYear()} Isa Bettonvil &middot; UX/UI Designer &amp; Visual Communicator
-        </p>
-      </Wrap>
+      </div>
     </section>
   )
 }

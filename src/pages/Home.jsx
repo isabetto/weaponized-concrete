@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Wrap from '../components/Wrap'
+import SitePreview from '../components/SitePreview'
 import Figure from '../components/Figure'
-import IsaDrawing from '../components/IsaDrawing'
+import IsaPortrait from '../components/IsaPortrait'
 import { Link } from 'react-router-dom'
 import usePageTitle from '../components/usePageTitle'
-import { projects } from '../data/projects'
+import { projects, previewLabel } from '../data/projects'
 
 const MARKED = 'onderzoekende blik.'
 const TOTAL = MARKED.length
@@ -81,6 +82,8 @@ function MarkedText({ ctl }) {
 export default function Home() {
   usePageTitle('')
   const ctl = useRef({ target: 0, touched: false, el: null, wake: () => {} })
+  const [preview, setPreview] = useState(null)
+  const closePreview = useCallback(() => setPreview(null), [])
 
   useEffect(() => {
     // Scrolling also drives the marker, for everyone who scrolls without moving the mouse (and on touch screens).
@@ -124,7 +127,7 @@ export default function Home() {
         className="on-plum flex bg-plum py-16 text-paper md:min-h-[740px] md:items-center md:py-20"
       >
         <Wrap className="relative">
-          <IsaDrawing className="pointer-events-none absolute right-10 top-1/2 hidden h-[300px] w-auto -translate-y-1/2 xl:block" />
+          <IsaPortrait className="pointer-events-none absolute right-10 top-1/2 hidden h-[300px] w-auto -translate-y-1/2 xl:block" />
           <h1 className="max-w-[16ch] font-display text-[44px] font-bold leading-[1] tracking-[-0.03em] text-balance md:max-w-none md:text-[88px]">
             Ontwerper met een <MarkedText ctl={ctl} />
           </h1>
@@ -137,7 +140,16 @@ export default function Home() {
             className="group mt-10 inline-flex items-center gap-5 font-display text-base font-medium uppercase md:mt-14 md:text-xl"
           >
             <span className="flex h-16 w-16 items-center justify-center rounded-full border border-paper/70 transition-colors duration-200 group-hover:bg-marker group-hover:text-ink md:h-20 md:w-20">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                aria-hidden="true"
+                className="transition-transform duration-300 ease-out group-hover:rotate-45 group-focus-visible:rotate-45"
+              >
                 <path d="M6 6l12 12M18 8v10H8" />
               </svg>
             </span>
@@ -158,8 +170,9 @@ export default function Home() {
                   alt={`Werk voor ${p.title}`}
                   tone={p.tone}
                   aspect="aspect-[14/9]"
-                  to={`/werk/${p.slug}`}
-                  label={`Lees de case ${p.title}`}
+                  to={p.preview ? undefined : `/werk/${p.slug}`}
+                  onClick={p.preview ? () => setPreview(p) : undefined}
+                  label={p.preview ? previewLabel(p) : `Lees de case ${p.title}`}
                   className={flip ? 'md:order-2' : ''}
                 />
                 <div className={`md:px-10 ${flip ? 'md:order-1' : ''}`}>
@@ -182,6 +195,7 @@ export default function Home() {
           })}
         </Wrap>
       </section>
+      <SitePreview project={preview} onClose={closePreview} />
     </>
   )
 }

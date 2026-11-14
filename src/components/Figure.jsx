@@ -29,13 +29,17 @@ export function Plate({ tone = 'butter', aspect = 'aspect-[16/10]', className = 
   )
 }
 
-export default function Figure({ src, alt, tone = 'butter', aspect, to, onClick, label, className = '' }) {
-  const img = <img src={src} alt={alt} className="h-auto max-h-full w-auto max-w-full object-contain" />
+export default function Figure({ src, alt, tone = 'butter', aspect, to, href, onClick, label, className = '', imageClassName = '' }) {
+  const img = <img src={src} alt={alt} className={`h-auto max-h-full w-auto max-w-full object-contain ${imageClassName}`} />
   const plate = <Plate tone={tone} aspect={aspect}>{img}</Plate>
   const lift = 'block transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_18px_30px_-12px_rgb(84_21_42/0.35)]'
   return (
     <figure className={className}>
-      {to ? (
+      {href ? (
+        <a href={href} target="_blank" rel="noreferrer" aria-label={label} className={lift}>
+          {plate}
+        </a>
+      ) : to ? (
         <Link to={to} aria-label={label} className={lift}>
           {plate}
         </Link>
