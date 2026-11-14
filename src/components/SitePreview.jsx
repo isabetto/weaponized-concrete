@@ -71,7 +71,7 @@ function AppBody({ project }) {
         <button type="button" onClick={() => go(i - 1)} disabled={i === 0} aria-label="Vorig scherm" className={arrow}>
           ←
         </button>
-        <ul className="flex items-center gap-2" aria-label="Schermen">
+        <ul className="flex items-center" aria-label="Schermen">
           {screens.map((s, n) => (
             <li key={s.src}>
               <button
@@ -79,8 +79,13 @@ function AppBody({ project }) {
                 onClick={() => go(n)}
                 aria-label={`Ga naar scherm ${n + 1} van ${screens.length}`}
                 aria-current={n === i ? 'true' : undefined}
-                className={`h-2.5 rounded-full transition-all ${n === i ? 'w-6 bg-ink' : 'w-2.5 bg-ink/35 hover:bg-ink/60'}`}
-              />
+                className="group flex h-8 min-w-8 items-center justify-center"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block h-2.5 rounded-full transition-all ${n === i ? 'w-6 bg-ink' : 'w-2.5 bg-ink/35 group-hover:bg-ink/60'}`}
+                />
+              </button>
             </li>
           ))}
         </ul>
@@ -98,6 +103,7 @@ function AppBody({ project }) {
 /* The window that shows a project in the website itself: a scrollable site or a phone with an app. */
 export default function SitePreview({ project, onClose }) {
   const closeRef = useRef(null)
+  const dialogRef = useRef(null)
   const open = Boolean(project)
   const isApp = project?.preview?.kind === 'app'
 
@@ -107,6 +113,22 @@ export default function SitePreview({ project, onClose }) {
     closeRef.current?.focus()
     const onKeyDown = (e) => {
       if (e.key === 'Escape') onClose()
+      if (e.key !== 'Tab' || !dialogRef.current) return
+      // Keep keyboard focus inside the open window.
+      const items = [...dialogRef.current.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+      if (!items.length) return
+      const first = items[0]
+      const last = items[items.length - 1]
+      if (!dialogRef.current.contains(document.activeElement)) {
+        e.preventDefault()
+        first.focus()
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     document.addEventListener('keydown', onKeyDown)
     document.body.style.overflow = 'hidden'
@@ -131,6 +153,7 @@ export default function SitePreview({ project, onClose }) {
           aria-label={`${isApp ? 'Apppreview' : 'Websitepreview'} van ${project.title}`}
         >
           <motion.div
+            ref={dialogRef}
             className={`flex h-full max-h-[900px] w-full flex-col overflow-hidden rounded-xl bg-paper shadow-2xl ${
               isApp ? 'max-w-[640px]' : 'max-w-[1180px]'
             }`}
@@ -154,7 +177,7 @@ export default function SitePreview({ project, onClose }) {
                 type="button"
                 onClick={onClose}
                 aria-label="Sluiten"
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-ink/50 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-ink/50 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper"
               >
                 ✕
               </button>

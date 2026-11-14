@@ -38,12 +38,12 @@ export default function Nav() {
 
   const linkClass = ({ isActive }) =>
     `px-1.5 py-0.5 font-display text-[15px] font-semibold text-ink transition-colors hover:bg-marker ${
-      isActive ? 'bg-marker hover:text-ink' : ''
+      isActive ? 'bg-marker underline decoration-2 underline-offset-[6px] hover:text-ink' : ''
     }`
 
   return (
     <header className="sticky top-0 z-50 bg-paper">
-      <Wrap className="flex h-16 items-center justify-between md:grid md:h-[103px] md:grid-cols-[1fr_auto_1fr]">
+      <Wrap className="flex h-16 items-center justify-between md:h-[103px] lg:grid lg:grid-cols-[1fr_auto_1fr]">
         <NavLink
           to="/"
           end
@@ -54,7 +54,7 @@ export default function Nav() {
           <span className="text-xs font-medium text-muted">UX/UI Designer</span>
         </NavLink>
 
-        <nav aria-label="Hoofdmenu" className="hidden items-center gap-12 md:flex">
+        <nav aria-label="Hoofdmenu" className="hidden items-center gap-6 md:flex lg:gap-12">
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className={linkClass}>
               {l.label}
@@ -100,7 +100,7 @@ export default function Nav() {
                         {isActive && (
                           <motion.span aria-hidden="true" variants={sweep} className="absolute inset-0 origin-left bg-marker" />
                         )}
-                        <span className="relative">{l.label}</span>
+                        <span className={`relative ${isActive ? 'underline decoration-2 underline-offset-[6px]' : ''}`}>{l.label}</span>
                       </>
                     )}
                   </NavLink>

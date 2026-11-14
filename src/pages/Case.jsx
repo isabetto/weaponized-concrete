@@ -79,6 +79,7 @@ export default function Case() {
           alt={`Werk voor ${p.title}`}
           tone={p.tone}
           aspect="aspect-[16/9]"
+          eager
           onClick={p.preview ? () => setSite(true) : undefined}
           label={p.preview ? previewLabel(p) : undefined}
           className="mt-12 md:mt-16"
@@ -99,7 +100,7 @@ export default function Case() {
             </div>
             <div className="md:col-span-6 md:col-start-7 md:self-end">
               {p.before ? (
-                <img src={p.before.src} alt={p.before.alt} className="block h-auto w-full ring-1 ring-ink/25" />
+                <img src={p.before.src} alt={p.before.alt} width={p.before.w} height={p.before.h} loading="lazy" decoding="async" className="block h-auto w-full ring-1 ring-ink/25" />
               ) : p.aside ? (
                 <figure className="bg-butter p-8 md:p-10">
                   <figcaption className="font-display text-base font-semibold text-muted">{p.aside.label}</figcaption>
@@ -137,6 +138,10 @@ export default function Case() {
                         <img
                           src={step.image.src}
                           alt={step.image.alt}
+                          width={step.image.w}
+                          height={step.image.h}
+                          loading="lazy"
+                          decoding="async"
                           className={`block h-auto w-full ring-1 ring-ink/25 ${step.image.narrow ? 'max-w-[440px]' : ''}`}
                         />
                       </div>
@@ -184,7 +189,7 @@ export default function Case() {
             {(!p.result || p.result.image) && (
               <div className="md:col-span-6 md:col-start-7">
                 {p.result ? (
-                  <img src={p.result.image.src} alt={p.result.image.alt} className="block h-auto w-full ring-1 ring-ink/25" />
+                  <img src={p.result.image.src} alt={p.result.image.alt} width={p.result.image.w} height={p.result.image.h} loading="lazy" decoding="async" className="block h-auto w-full ring-1 ring-ink/25" />
                 ) : (
                   <Placeholder label="Eindontwerp in context, bijvoorbeeld op een apparaat" />
                 )}

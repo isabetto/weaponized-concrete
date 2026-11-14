@@ -29,8 +29,8 @@ export function Plate({ tone = 'butter', aspect = 'aspect-[16/10]', className = 
   )
 }
 
-export default function Figure({ src, alt, tone = 'butter', aspect, to, href, onClick, label, className = '', imageClassName = '' }) {
-  const img = <img src={src} alt={alt} className={`h-auto max-h-full w-auto max-w-full object-contain ${imageClassName}`} />
+export default function Figure({ src, alt, tone = 'butter', aspect, to, href, onClick, label, className = '', imageClassName = '', eager = false }) {
+  const img = <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" className={`h-auto max-h-full w-auto max-w-full object-contain ${imageClassName}`} />
   const plate = <Plate tone={tone} aspect={aspect}>{img}</Plate>
   const lift = 'block transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_18px_30px_-12px_rgb(84_21_42/0.35)]'
   return (

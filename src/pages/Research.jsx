@@ -46,7 +46,7 @@ export default function Research() {
                   <dd>Tilburg University &middot; {t.date}</dd>
                 </div>
               </dl>
-              <h2 className="mt-4 font-display text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-balance md:text-[38px]">
+              <h2 lang={t.lang} className="mt-4 font-display text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-balance md:text-[38px]">
                 {t.title}
               </h2>
               <h3 className="mt-10 font-display text-xl font-bold">{t.abstractLabel}</h3>

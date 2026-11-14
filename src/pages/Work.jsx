@@ -18,20 +18,20 @@ export default function Work() {
           <li key={p.slug} className="border-b border-ink/25">
             <Link
               to={`/werk/${p.slug}`}
-              className="group grid items-center gap-5 py-8 md:grid-cols-12 md:gap-8 md:py-10"
+              className="group grid items-center gap-5 py-8 md:grid-cols-12 md:gap-x-8 md:gap-y-4 md:py-10"
             >
-              <div className="relative flex aspect-[16/10] items-center justify-center bg-paper p-5 ring-1 ring-ink/25 md:col-span-3">
-                <img src={p.image} alt="" className="h-auto max-h-full w-auto max-w-full object-contain" />
+              <div className="md:col-span-5 md:row-span-2 lg:col-span-4 lg:row-span-1">
+                <img src={p.image} alt="" className="block h-auto w-full" />
               </div>
-              <div className="md:col-span-6">
-                <h2 className="font-display text-[30px] font-bold leading-[1.05] tracking-[-0.02em] md:text-[44px]">
+              <div className="md:col-span-7 md:self-end lg:col-span-5 lg:self-auto">
+                <h2 className="font-display text-[30px] font-bold leading-[1.05] tracking-[-0.02em] md:text-[36px] lg:text-[44px]">
                   <span className="bg-[linear-gradient(var(--color-marker),var(--color-marker))] bg-[length:0%_0.7em] bg-[position:0_90%] bg-no-repeat transition-[background-size] duration-300 ease-out group-hover:bg-[length:100%_0.7em]">
                     {p.title}
                   </span>
                 </h2>
                 <p className="mt-3 max-w-[44ch] font-body text-lg leading-[1.5] text-muted">{p.summary}</p>
               </div>
-              <div className="md:col-span-3">
+              <div className="md:col-span-7 md:self-start lg:col-span-3 lg:self-auto">
                 <p className="font-display text-sm font-semibold text-ink">{p.type}</p>
                 <ul className="mt-2 space-y-0.5 font-display text-sm text-muted">
                   {p.skills.map((s) => (

@@ -51,8 +51,14 @@ export default function App() {
   const { pathname } = useLocation()
   return (
     <div className="flex min-h-screen flex-col bg-paper">
+      <a
+        href="#inhoud"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-5 focus:py-3 focus:font-display focus:text-base focus:font-semibold focus:text-paper"
+      >
+        Naar de inhoud
+      </a>
       <Nav />
-      <main className="flex-1">
+      <main id="inhoud" tabIndex={-1} className="flex-1 outline-none">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/werk" element={<Work />} />

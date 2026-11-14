@@ -7,7 +7,7 @@ export const SITE_HEIGHT = 3086
 
 const DARK = '#191a19'
 const ORANGE = '#e9563a'
-const FONT = "'Inter', system-ui, sans-serif"
+const FONT = "'Inter Variable', system-ui, sans-serif"
 
 const abs = (style) => ({ position: 'absolute', margin: 0, whiteSpace: 'nowrap', ...style })
 

@@ -17,6 +17,7 @@ export const theses = [
   {
     slug: 'master',
     level: 'Masterthesis',
+    lang: 'en',
     title:
       'Is this AI? An Experimental Study Using a Narrative Inoculation Game to Improve Resistance to AI-Generated Disinformation Videos',
     date: 'Juli 2026',

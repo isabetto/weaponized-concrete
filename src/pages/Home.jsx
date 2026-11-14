@@ -48,7 +48,9 @@ function MarkedText({ ctl }) {
   // Every character of the phrase, the space included, owns one slot, so the marker edge moves on without gaps.
   let count = 0
   return (
-    <span ref={root} aria-label={MARKED}>
+    <>
+      <span className="sr-only">{MARKED}</span>
+      <span ref={root} aria-hidden="true">
       {MARKED.split(' ').map((word, w) => {
         let space = null
         if (w > 0) {
@@ -60,7 +62,7 @@ function MarkedText({ ctl }) {
           )
         }
         return (
-          <span key={w} aria-hidden="true">
+          <span key={w}>
             {space}
             <span className="whitespace-nowrap">
               {word.split('').map((ch, i) => {
@@ -75,7 +77,8 @@ function MarkedText({ ctl }) {
           </span>
         )
       })}
-    </span>
+      </span>
+    </>
   )
 }
 
@@ -128,7 +131,7 @@ export default function Home() {
       >
         <Wrap className="relative">
           <IsaPortrait className="pointer-events-none absolute right-10 top-1/2 hidden h-[300px] w-auto -translate-y-1/2 xl:block" />
-          <h1 className="max-w-[16ch] font-display text-[44px] font-bold leading-[1] tracking-[-0.03em] text-balance md:max-w-none md:text-[88px]">
+          <h1 className="max-w-[16ch] font-display text-[34px] font-bold leading-[1] tracking-[-0.03em] text-balance min-[380px]:text-[44px] md:max-w-none md:text-[64px] lg:text-[88px]">
             Ontwerper met een <MarkedText ctl={ctl} />
           </h1>
           <p className="mt-6 max-w-[760px] font-display text-[22px] leading-[1.3] text-paper md:mt-8 md:text-[36px]">
@@ -184,9 +187,9 @@ export default function Home() {
                     <p className="mt-3 font-body text-base leading-[1.5] text-muted">{p.summary}</p>
                     <Link
                       to={`/werk/${p.slug}`}
-                      className="mt-4 inline-flex items-center gap-2 font-display text-[15px] font-semibold text-ink underline-offset-4 hover:underline"
+                      className="mt-2 inline-flex min-h-11 items-center gap-2 font-display text-[15px] font-semibold text-ink underline-offset-4 hover:underline"
                     >
-                      Bekijk case <span aria-hidden="true">&rarr;</span>
+                      Bekijk case <span className="sr-only">{p.title}</span> <span aria-hidden="true">&rarr;</span>
                     </Link>
                   </div>
                 </div>

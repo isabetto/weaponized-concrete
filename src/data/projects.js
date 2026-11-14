@@ -7,9 +7,8 @@ export const projects = [
     skills: ['UI-ontwerp', 'Website-ontwerp', 'Prototyping', 'Visuele communicatie'],
     title: 'Stichting de Langspeelplaat',
     image: '/langspeelplaat-screenshot.png',
-    screens: ['/langspeelplaat-screenshot.png'],
     before: {
-      src: '/langspeelplaat/oude-site.jpg',
+      src: '/langspeelplaat/oude-site.jpg', w: 2560, h: 2600,
       alt: 'De oude website van Stichting de Langspeelplaat: een witte pagina met een rode titel, vier albumhoezen en een grijs blok met tekst over de vinylzaak.',
     },
     steps: [
@@ -27,7 +26,7 @@ export const projects = [
           'Zo kunnen de website en alles wat daarna komt **dezelfde herkenbare stijl** houden.',
         ],
         image: {
-          src: '/langspeelplaat/brandbook.jpg',
+          src: '/langspeelplaat/brandbook.jpg', w: 1185, h: 2000,
           narrow: true,
           alt: 'Brandbook van de Langspeelplaat: de titel in oranje, een halftone draaitafel, een foto van Jos in de winkel, een voorbeeld van een vinylwebsite, het kleurenpalet (#ec6144, #1d1c1c, #4d4d4d, #888888, #e2e2e2), de lettertypes Anton en Antonio en een zwart-witportret van Jos.',
         },
@@ -39,7 +38,7 @@ export const projects = [
           'Zo legde ik de **volgorde en indeling** vast voordat er kleur en beeld bij kwamen.',
         ],
         image: {
-          src: '/langspeelplaat/wireframe.png',
+          src: '/langspeelplaat/wireframe.png', w: 2560, h: 3868,
           alt: 'Wireframe van de homepage met alleen vlakken en lijnen in grijstinten: header, hero met knop en afbeelding, een blok met afbeelding en tekst, een foto over de volle breedte, een reviewblok, openingstijden naast een kaart, een contactblok en een footer.',
         },
       },
@@ -50,7 +49,7 @@ export const projects = [
         'Het brandbook zorgt ervoor dat de stichting ook buiten de website met **dezelfde kleuren, lettertypes en beeldstijl** kan blijven werken.',
       ],
       image: {
-        src: '/langspeelplaat/resultaat.jpg',
+        src: '/langspeelplaat/resultaat.jpg', w: 2560, h: 2660,
         alt: 'Het nieuwe ontwerp van de website: een donkere hero met oranje titel en halftone-draaitafel, gevolgd door het stuk over Jos met een foto van hem met kleurrijke platen.',
       },
     },
@@ -58,7 +57,6 @@ export const projects = [
       kind: 'site',
       alt: 'De website van Stichting de Langspeelplaat: een donkere startpagina met een draaitafel, een stukje over eigenaar Jos, reviews, openingstijden met kaart en contactgegevens.',
     },
-    video: '/langspeelplaat-demo.mp4',
     details: [
       'Voor een lokale platenzaak heb ik een **nieuwe website** ontworpen.',
       'De website dient vooral als **visitekaartje**, met **openingstijden, locatie en de sfeer van de winkel**.',
@@ -71,8 +69,7 @@ export const projects = [
     summary: 'Een app die jongeren op een laagdrempelige manier leert over toeslagen.',
     skills: ['UX/UI-ontwerp', 'Prototyping: high-fidelity', 'Usability- en UX-testen', 'Interactieontwerp'],
     title: 'BASE',
-    image: '/base-wide.png',
-    screens: ['/base-app-screens.png'],
+    image: '/base-wide.webp',
     aside: {
       label: 'Onderzoeksvraag',
       text: 'Hoe kunnen we jongvolwassenen op een leuke en speelse manier leren over de verschillende toeslagen?',
@@ -99,7 +96,7 @@ export const projects = [
           'Het prototype heeft een intro, een wiki, een quiz, een calculator, een aanvraagroute, workshops en een buddy.',
         ],
         image: {
-          src: '/base/overzicht.jpg',
+          src: '/base/overzicht.jpg', w: 1600, h: 1800,
           alt: 'Zes schermen van de BASE-app: het startscherm met een spaarvarken, de keuze van je situatie, het hoofdmenu, de wiki, een quizvraag en de calculator.',
         },
       },
@@ -118,25 +115,24 @@ export const projects = [
         'Onze aanbevelingen: de uitleg **opdelen in korte, visuele stukjes**, zoals Instagram- of TikTok-verhalen, onderzoeken welke **menutitels en volgorde** voor de doelgroep werken, en een **onboarding** en een **terugknop** toevoegen.',
       ],
       image: {
-        src: '/base/resultaat.jpg',
+        src: '/base/resultaat.jpg', w: 1600, h: 945,
         alt: 'Drie schermen van BASE: de quiz afgerond met een groen vinkje, de calculator en de uitkomst met het bedrag per maand.',
       },
     },
     preview: {
       kind: 'app',
       screens: [
-        { src: '/base/splash.jpg', alt: 'Startscherm van BASE met een spaarvarken en de tekst Your tax benefit Companion' },
-        { src: '/base/intro1.jpg', alt: 'Taalkeuze met de vlaggen van Nederland, het Verenigd Koninkrijk, Griekenland en Frankrijk' },
-        { src: '/base/intro2.jpg', alt: 'Keuze van situaties: werk, huur, kinderen en zorg' },
-        { src: '/base/home.jpg', alt: 'Startscherm met Wiki, Quiz, Calculator, Apply, Workshop en Buddy' },
-        { src: '/base/wiki.jpg', alt: 'Wiki met de toeslagen die bij jouw situatie passen' },
-        { src: '/base/quiz.jpg', alt: 'Quizvraag over welke factoren de zorgtoeslag beïnvloeden' },
-        { src: '/base/welldone.jpg', alt: 'Quiz afgerond met een groen vinkje' },
-        { src: '/base/calc.jpg', alt: 'Calculator waarin je je geschatte inkomen invult' },
-        { src: '/base/eligible.jpg', alt: 'Uitkomst: je komt in aanmerking, met het bedrag per maand' },
+        { src: '/base/splash.jpg', w: 1125, h: 2001, alt: 'Startscherm van BASE met een spaarvarken en de tekst Your tax benefit Companion' },
+        { src: '/base/intro1.jpg', w: 1125, h: 2001, alt: 'Taalkeuze met de vlaggen van Nederland, het Verenigd Koninkrijk, Griekenland en Frankrijk' },
+        { src: '/base/intro2.jpg', w: 1125, h: 2001, alt: 'Keuze van situaties: werk, huur, kinderen en zorg' },
+        { src: '/base/home.jpg', w: 1125, h: 2001, alt: 'Startscherm met Wiki, Quiz, Calculator, Apply, Workshop en Buddy' },
+        { src: '/base/wiki.jpg', w: 1125, h: 2001, alt: 'Wiki met de toeslagen die bij jouw situatie passen' },
+        { src: '/base/quiz.jpg', w: 1125, h: 2001, alt: 'Quizvraag over welke factoren de zorgtoeslag beïnvloeden' },
+        { src: '/base/welldone.jpg', w: 1125, h: 2001, alt: 'Quiz afgerond met een groen vinkje' },
+        { src: '/base/calc.jpg', w: 1125, h: 2001, alt: 'Calculator waarin je je geschatte inkomen invult' },
+        { src: '/base/eligible.jpg', w: 1125, h: 2001, alt: 'Uitkomst: je komt in aanmerking, met het bedrag per maand' },
       ],
     },
-    video: '/base-app-demo.mp4',
     details: [
       'Voor het vak Human Centered Design ontwierp ik BASE: een app die het **leren over toeslagen leuker en toegankelijker** maakt voor jongeren, via een **quizvorm met directe feedback**.',
       'Het probleem: **meer dan 27% van de Nederlanders** weet niet of ze recht hebben op toeslagen of welke factoren daarvoor meetellen, en **jongvolwassenen van 21 tot 29 jaar** hebben vaker financiële problemen dan gemiddeld.',
@@ -152,8 +148,7 @@ export const projects = [
     summary: 'Herontwerp van de webshop om de conversieratio te verbeteren.',
     skills: ['UI-ontwerp', 'Gebruikersonderzoek en iteraties', 'Contentcreatie en tone-of-voice', 'Visuele communicatie'],
     title: 'Lapswans',
-    image: '/lapswans-screenshot.png',
-    screens: ['/lapswans-screenshot.png'],
+    image: '/lapswans-screenshot.webp',
     aside: {
       label: 'Uitgangspunt',
       text: 'Bezoekers moeten meer over het merk leren en sneller vertrouwen krijgen om een duurzaam product te kopen.',
@@ -166,7 +161,7 @@ export const projects = [
           'Zo leert een bezoeker het **merk kennen** op weg naar een aankoop.',
         ],
         image: {
-          src: '/lapswans/ontwerp.jpg',
+          src: '/lapswans/ontwerp.jpg', w: 1600, h: 1587,
           alt: 'Het ontwerp van de Lapswans-webshop: een gele header met logo en menu, een foto van drie mensen met de knop Bekijk de collectie, onze bestsellers met drie t-shirts en het begin van het verhaal over duurzame kleding.',
         },
       },
@@ -183,7 +178,7 @@ export const projects = [
           'De flyer verwijst met een **QR-code** naar de webshop.',
         ],
         image: {
-          src: '/lapswans-flyer.png',
+          src: '/lapswans-flyer.webp', w: 1414, h: 2000,
           narrow: true,
           alt: 'Flyer van Lapswans op een lichtblauwe achtergrond met het logo, de tekst Maak kennis met Lapswans, een QR-code met Scan en explore, keurmerken voor biologisch katoen en lokaal bezorgd per fiets, en de getekende Lapswans-figuurtjes.',
         },
@@ -200,8 +195,6 @@ export const projects = [
       image: '/lapswans/site.jpg',
       alt: 'De webshop van Lapswans: een gele header met logo en menu, een foto van drie mensen met de knop Bekijk de collectie, onze bestsellers, een stukje over duurzame kleding, de collectie De Originals en reviews van klanten.',
     },
-    video: '/lapswans-demo.mp4',
-    flyer: '/lapswans-flyer.png',
     social: [
       { label: 'Instagram', handle: '@lapswans_', href: 'https://www.instagram.com/lapswans_/' },
       { label: 'TikTok', handle: '@lapswans_', href: 'https://www.tiktok.com/@lapswans_' },

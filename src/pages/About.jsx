@@ -11,11 +11,12 @@ export default function About() {
 
       <div className="mt-14 grid gap-10 md:mt-20 md:grid-cols-12 md:gap-8">
         <Figure
-          src="/isa-portrait-about.png"
+          src="/isa-portrait-about.webp"
           alt="Isa Bettonvil"
           tone="pink"
           aspect="aspect-[4/5]"
           imageClassName="rounded-[28px]"
+          eager
           className="md:col-span-4"
         />
         <div className="md:col-span-7 md:col-start-6">
