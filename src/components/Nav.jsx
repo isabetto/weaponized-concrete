@@ -23,11 +23,6 @@ export default function Nav() {
     closed: { height: 0, opacity: 0, transition: { duration: reduced ? 0 : 0.22, ease: [0.7, 0, 0.84, 0] } },
     open: { height: 'auto', opacity: 1, transition: { duration: reduced ? 0 : 0.32, ease: [0.16, 1, 0.3, 1] } },
   }
-  // The pink marker of the current page runs in from the left the moment its row starts to unfold.
-  const sweep = {
-    closed: { scaleX: 0, transition: { duration: reduced ? 0 : 0.2, ease: [0.7, 0, 0.84, 0] } },
-    open: { scaleX: 1, transition: { duration: reduced ? 0 : 0.45, delay: 0, ease: [0.22, 1, 0.36, 1] } },
-  }
 
   useEffect(() => {
     if (!open) return
@@ -93,15 +88,10 @@ export default function Nav() {
                   <NavLink
                     to={l.to}
                     onClick={() => setOpen(false)}
-                    className="relative block py-4 font-display text-xl font-semibold text-ink"
+                    className="block py-4 font-display text-xl font-semibold text-ink"
                   >
                     {({ isActive }) => (
-                      <>
-                        {isActive && (
-                          <motion.span aria-hidden="true" variants={sweep} className="absolute inset-0 origin-left bg-marker" />
-                        )}
-                        <span className={`relative ${isActive ? 'underline decoration-2 underline-offset-[6px]' : ''}`}>{l.label}</span>
-                      </>
+                      <span className={isActive ? 'underline decoration-2 underline-offset-[6px]' : ''}>{l.label}</span>
                     )}
                   </NavLink>
                 </Wrap>
